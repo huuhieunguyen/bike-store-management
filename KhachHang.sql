@@ -1,0 +1,30 @@
+CREATE TABLE KHACHHANG (
+    MAKH CHAR(4) NOT NULL,
+    HOTEN VARCHAR(50),
+    SDT VARCHAR(10),
+    NGSINH DATE,
+    DIACHI VARCHAR(50),
+    EMAIL VARCHAR(40),
+    CONSTRAINT pk_kh PRIMARY KEY (MAKH)
+);
+--khachhang
+INSERT INTO KHACHHANG VALUES ('KH01','Nguyen Thuy Anh ','0903456824',TO_DATE('07/04/1997','DD/MM/YYYY'),'45/2 An Duong Vuong, Q5, TpHCM','thuyanh@gmal.com.vn');
+INSERT INTO KHACHHANG VALUES ('KH02','Tran Thao Anh','0987023412',TO_DATE('11/11/1990','DD/MM/YYYY'),'45 Nguyen Canh Chan, Q1, TpHCM','thaoanh1990@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH03','Mai Thuy An ','0982527982',TO_DATE('09/03/1986','DD/MM/YYYY'),'731 Tran Hung Dao, Q5, TpHCM','thuyan9x@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH04','Nguyen Hong Anh','0973776072',TO_DATE('20/09/1975','DD/MM/YYYY'),'23/5 Nguyen Trai, Q5, TpHCM','anh2009@yahoo.com.vn');
+INSERT INTO KHACHHANG VALUES ('KH05','Le Van Bach ','0917749254',TO_DATE('01/05/1996','DD/MM/YYYY'),'50/34 Le Dai Hanh, Q10, TpHCM','bachle96@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH06','Nguyen Hoang Bao','0986306331',TO_DATE('15/01/1985','DD/MM/YYYY'),'34/34B Nguyen Trai, Q1, TpHCM','baonguyen2010@yahoo.com.vn');
+INSERT INTO KHACHHANG VALUES ('KH07','Tran Xuan Bao ','0979115345',TO_DATE('09/06/1988','DD/MM/YYYY'),'873 Le Hong Phong, Q5, TpHCM','saigonbao@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH08','Nguyen Viet Chinh ','0933140284',TO_DATE('01/04/1973','DD/MM/YYYY'),'32/3 Tran Binh Trong, Q5, TpHCM','chinhcathang4@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH09','Tran Cong Chien','0914162689',TO_DATE('27/12/1989','DD/MM/YYYY'),'34 Truong Dinh, Q3, TpHCM','chienthang@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH10','Dao Van Cuong','0982725726',TO_DATE('19/08/1997','DD/MM/YYYY'),'227 Nguyen Van Cu, Q5, TpHCM','cuongvip@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH11','Vu Hoa Cuc','0974131489',TO_DATE('08/04/1973','DD/MM/YYYY'),'10 Kenh Nuoc Den, Q.BT, TpHCM','hoacuc73@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH12','Bui Nguyen Thi Dao ','0984084034',TO_DATE('12/12/1963','DD/MM/YYYY'),'120 Le Anh Xuan, Q.TP, TpHCM','daonguyen@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH13','Luong Van Duc','0936053286',TO_DATE('24/05/2000','DD/MM/YYYY'),'20 Bau Cat, Q.TB, TpHCM','duc2000@yahoo.com.vn');
+INSERT INTO KHACHHANG VALUES ('KH14','Hoang Nam Dung','0986958908',TO_DATE('02/09/1964','DD/MM/YYYY'),'78 CMT8, Q.TB, TpHCM','');
+INSERT INTO KHACHHANG VALUES ('KH15','Le Hoai Giang','0904054732',TO_DATE('07/01/2001','DD/MM/YYYY'),'10 Bach Dang, Q.PN, TpHCM','giangle@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH16','Dao Ba Loc','0983043195',TO_DATE('27/11/1994','DD/MM/YYYY'),'5 Truong Tho, Q.Thu Duc, TpHCM','loc94@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH17','Hoai Phuong','0912992158',TO_DATE('12/03/1999','DD/MM/YYYY'),'53 Le Thi Hoa, Q.Thu Duc, TpHCM','phuongtn@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH18','Tran Ngoc Minh','0975808375',TO_DATE('09/05/1998','DD/MM/YYYY'),'38/7A Nguyen Kiem, Q.PN, TpHCM','minhben@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH19','Do Van Ut','0976054844',TO_DATE('30/01/1970','DD/MM/YYYY'),'106/3/5 Ban Co, Q3, TpHCM','uttich@gmal.com');
+INSERT INTO KHACHHANG VALUES ('KH20','Vo Hoang Yen','0974808483',TO_DATE('18/10/2001','DD/MM/YYYY'),'84/20 Tran Phu, Q5, TpHCM','yenchibi@gmal.com');
