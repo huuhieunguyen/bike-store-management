@@ -183,3 +183,32 @@ BEGIN
     SET TRIGIA = tgia, MAKM = ma_km
     WHERE MAHD = ma_hd;
 END;
+
+--0. C?p nh?p tr? giá và mã khuy?n mãi
+CREATE OR REPLACE PROCEDURE sp_trigia
+IS 
+    mhd HOADON.MAHD%TYPE;
+    tgia HOADON.TRIGIA%TYPE;
+    pTram KHUYENMAI.PHANTRAM%TYPE;
+    ma_km HOADON.MAKM%TYPE;
+    CURSOR ma_hd  IS
+        SELECT MAHD
+        FROM HOADON;
+BEGIN
+    OPEN ma_hd;
+    LOOP 
+        FETCH ma_hd INTO mhd;
+        EXIT WHEN ma_hd%NOTFOUND;
+        tgia:= func_tinh_trigia_hd(mhd);
+        ma_km:=func_makm_hd(tgia);
+        pTram:=func_ptramkm_hd(tgia);
+        tgia:=tgia*(1-pTram);
+        UPDATE HOADON
+        SET TRIGIA = tgia, MAKM =ma_km
+        WHERE MAHD = mhd;
+    END LOOP;
+END;
+
+begin
+    sp_trigia;
+end;
