@@ -72,7 +72,7 @@ CREATE TABLE HOADON (
     MAKH CHAR(4),
     MANV CHAR(4),
     TRIGIA NUMBER,
-    KHUYENMAI FLOAT,
+    MAKM CHAR(4),
     CONSTRAINT pk_hd PRIMARY KEY (MAHD)
 );
 CREATE TABLE CTHD (
@@ -184,7 +184,7 @@ insert into NHANVIEN values('NV22','Le Van Giang', 'Nam', '0933484618',TO_DATE('
 insert into NHANVIEN values('NV23','Nguyen Xuan Dong', 'Nam', '0918129188',TO_DATE('30/08/2000','DD/MM/YYYY'),'Quan Thu Duc','461862108',TO_DATE('19/02/2020','DD/MM/YYYY'),'NV21',1, 'K001');
 insert into NHANVIEN values('NV24','Tran Thanh Hai', 'Nam', '0908356130',TO_DATE('23/04/1999','DD/MM/YYYY'),'Quan Thu Duc','981274012',TO_DATE('19/02/2020','DD/MM/YYYY'),'NV21',1, 'K001');
 insert into NHANVIEN values('NV25','Vu Thi Hong Hanh', 'Nu', '0988805526',TO_DATE('17/06/1998','DD/MM/YYYY'),'Quan 1','141923617',TO_DATE('23/02/2019','DD/MM/YYYY'),'NV21',1, 'K001');
-insert into NHANVIEN values('NV26','’Huynh Minh Huu', 'Nam', '0918740540',TO_DATE('25/06/1999','DD/MM/YYYY'),'Quan 1','671461846',TO_DATE('23/02/2019','DD/MM/YYYY'),'NV21',1, 'K001');
+insert into NHANVIEN values('NV26','Â’Huynh Minh Huu', 'Nam', '0918740540',TO_DATE('25/06/1999','DD/MM/YYYY'),'Quan 1','671461846',TO_DATE('23/02/2019','DD/MM/YYYY'),'NV21',1, 'K001');
 
 --Nhan vien phong to chuc hanh chinh
 insert into NHANVIEN values('NV27','Pham Van Hien', 'Nam', '0908248238',TO_DATE('01/10/2000','DD/MM/YYYY'),'Quan 1','271847194',TO_DATE('23/02/2019','DD/MM/YYYY'),'NV27',2, 'PB01');
@@ -280,7 +280,7 @@ insert into SANPHAM values('GT02','Gang tay GIANT Rival Short Finger Gloves','do
 insert into SANPHAM values('GT03','Gang tay LIV Zorya Long Finger Gloves','doi','Han Quoc',335000, 0);
 
 insert into SANPHAM values('MK01','Mat kinh Sunglasses Apus-Kolor CAT.2','cap','Han2 Quoc',5650000, 0);
-insert into SANPHAM values('MK02','Mat kinh Stratos Lite – Kolor Up','cap','Dai Loan',150000, 0);
+insert into SANPHAM values('MK02','Mat kinh Stratos Lite Â– Kolor Up','cap','Dai Loan',150000, 0);
 
 insert into SANPHAM values('BO01','Ong bom Floor Pump Control Tower 1','chiec','Trung Quoc',99000, 0);
 
@@ -299,9 +299,9 @@ insert into SANPHAM values('SE03','Sen xe dap tre em', 'bo', 'Viet Nam',250000, 
 insert into SANPHAM values('BR01','Gom thang dia Sport Disc Pad','cap','Malaysia',219000, 0);
 insert into SANPHAM values('BR02','Gom thang cao su Rim Brake Pads','cap','Thai Lan',50000, 0);
 
-insert into SANPHAM values('RU01','Ruot xe dap 700×35-45 SV 35mm','chiec','Singapore',159000, 0);
-insert into SANPHAM values('RU02','Ruot xe dap 26×1.90/2.125 PV','chiec','Viet Nam',235000, 0);
-insert into SANPHAM values('RU03','Ruot xe dap 700×32/47C 42mm CONTINENTAL','chiec','Viet Nam',159000, 0);
+insert into SANPHAM values('RU01','Ruot xe dap 700Ã—35-45 SV 35mm','chiec','Singapore',159000, 0);
+insert into SANPHAM values('RU02','Ruot xe dap 26Ã—1.90/2.125 PV','chiec','Viet Nam',235000, 0);
+insert into SANPHAM values('RU03','Ruot xe dap 700Ã—32/47C 42mm CONTINENTAL','chiec','Viet Nam',159000, 0);
 insert into SANPHAM values('RU04','Vo xe dap khong ruot GIANT Gavia AC 1','chiec','Thai Lan',300000, 0);
 insert into SANPHAM values('RU05','Vo xe dap ruot GIANT AC 1','chiec','Viet Nam',350000, 0);
 
