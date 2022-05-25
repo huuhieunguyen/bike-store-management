@@ -75,7 +75,25 @@ BEGIN
     RETURN pTram;
 END;
 
---7. T?o 1 MANV m?i
+--7. Tính t?ng s? l??ng s?n ph?m
+CREATE OR REPLACE FUNCTION func_tongsl (ma_sp SANPHAM.MASP%TYPE) RETURN INT
+AS
+    tongch INT;
+    tongkho INT;
+    tong INT;
+BEGIN
+    SELECT SUM(SL_CH) INTO tongch
+    FROM CTTON
+    WHERE MASP = ma_sp;
+    
+    SELECT DISTINCT(SL_KHO) INTO tongkho
+    FROM CTTON
+    WHERE MASP = ma_sp;
+    tong:= tongch + tongkho;
+    RETURN tong;
+END;
+
+--8. T?o 1 MANV m?i
 CREATE OR REPLACE FUNCTION func_taomanv RETURN NHANVIEN.MANV%TYPE
 AS 
     ma_nv NHANVIEN.MANV%TYPE;
@@ -104,7 +122,7 @@ BEGIN
     RETURN ma_nv;
 END;   
 
---8. T?o 1 MAKH m?i
+--9. T?o 1 MAKH m?i
 CREATE OR REPLACE FUNCTION func_taomakh RETURN KHACHHANG.MAKH%TYPE
 AS 
     ma_kh KHACHHANG.MAKH%TYPE;
@@ -133,7 +151,7 @@ BEGIN
     RETURN ma_kh;
 END;
 
---9. T?o MASP m?i
+--10. T?o MASP m?i
 CREATE OR REPLACE FUNCTION func_taomasp (kihieu VARCHAR) RETURN SANPHAM.MASP%TYPE
 AS 
     ma_sp SANPHAM.MASP%TYPE;
@@ -163,7 +181,7 @@ BEGIN
     RETURN ma_sp;
 END;
 
---10. T?o 1 MAHD m?i
+--11. T?o 1 MAHD m?i
 CREATE OR REPLACE FUNCTION func_taomahd RETURN HOADON.MAHD%TYPE
 AS 
     ma_hd HOADON.MAHD%TYPE;
@@ -192,7 +210,7 @@ BEGIN
     RETURN ma_hd;
 END;
 
---11. Trung chuy?n s?n ph?m
+--12. Trung chuy?n s?n ph?m
 CREATE OR REPLACE FUNCTION func_trungchuyen_sp (ma_sp SANPHAM.MASP%TYPE,
                                                 ma_nv NHANVIEN.MANV%TYPE,
                                                 sl_yeucau INT)
@@ -229,4 +247,33 @@ BEGIN
         RETURN 1;
     END;
     END IF;
+END;
+
+--13. Ki?m tra kho?ng cách 2 ngày có ?? 18 n?m không
+CREATE OR REPLACE FUNCTION func_du18tuoi ( x DATE, y DATE ) RETURN INT
+AS
+BEGIN
+    if (extract (year from y) - extract (year from x) >= 18) then
+            if(extract (year from y) - extract (year from x) = 18) then
+                if (extract (month from y) >= extract (month from x))then
+                BEGIN
+                    if (extract (month from y) = extract (month from x)) then
+                        if (extract (day from y) >= extract (day from x)) then
+                            RETURN 1;
+                        else 
+                            RETURN 0;
+                        end if;
+                    else 
+                        RETURN 1;
+                    end if;
+                END;
+                else 
+                    RETURN 0;
+                end if;
+            else 
+                return 1;
+            end if;
+    else 
+        return 0;
+    end if;
 END;
