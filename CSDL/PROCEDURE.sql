@@ -184,7 +184,7 @@ BEGIN
     WHERE MAHD = ma_hd;
 END;
 
---0. C?p nh?p tr? giá và mã khuy?n mãi
+--0.1. C?p nh?p tr? giá và mã khuy?n mãi
 CREATE OR REPLACE PROCEDURE sp_trigia
 IS 
     mhd HOADON.MAHD%TYPE;
@@ -208,7 +208,30 @@ BEGIN
         WHERE MAHD = mhd;
     END LOOP;
 END;
-
+--PL/SQL
 begin
     sp_trigia;
+end;
+--0.2. C?p nh?p t?ng s? l??ng
+CREATE OR REPLACE PROCEDURE sp_tongsl
+IS 
+    msp SANPHAM.MASP%TYPE;
+    tong SANPHAM.TONGSL%TYPE;
+    CURSOR ma_sp  IS
+        SELECT MASP
+        FROM SANPHAM;
+BEGIN
+    OPEN ma_sp;
+    LOOP 
+        FETCH ma_sp INTO msp;
+        EXIT WHEN ma_sp%NOTFOUND;
+        tong:=func_tongsl(msp);
+        UPDATE SANPHAM
+        SET TONGSL = tong
+        WHERE MASP = msp;
+    END LOOP;
+END;
+--PL/SQL
+begin
+    sp_tongsl;
 end;
