@@ -95,7 +95,7 @@ BEGIN
     tong:=func_tongsl(:new.MASP);
     IF (tong != :new.TONGSL) THEN 
     BEGIN
-        RAISE_APPLICATION_ERROR(-20110, 'Tong so luog cua SANPHAM phai bang tong so luong sanpham do tai cac co so chua no');
+        RAISE_APPLICATION_ERROR(-20107, 'Tong so luog cua SANPHAM phai bang tong so luong sanpham do tai cac co so chua no');
     END;
     END IF;
 END;
@@ -106,6 +106,6 @@ before update on NHANVIEN
 for each row
 begin
     if(:new.HESO < :old.HESO) then
-        RAISE_APPLICATION_ERROR(-20111, 'He so luong moi cua NHANVIEN phai lon hon he so luong cu cua NHANVIEN do');
+        RAISE_APPLICATION_ERROR(-20108, 'He so luong moi cua NHANVIEN phai lon hon he so luong cu cua NHANVIEN do');
     end if;
 end;
