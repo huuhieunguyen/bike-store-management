@@ -4,8 +4,6 @@
  */
 package View;
 
-import View.DangNhap;
-
 /**
  *
  * @author User
