@@ -529,31 +529,45 @@ public class Menu_QLCH extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDangXuatActionPerformed
     //Thanh Hieu
     private void btnQLKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLKhoActionPerformed
-        // TODO add your handling code here:
+        View.QL_Kho mhKho = new View.QL_Kho();
+        this.setVisible(false);
+        mhKho.setVisible(true);
     }//GEN-LAST:event_btnQLKhoActionPerformed
     //Thanh Hieu
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
-        // TODO add your handling code here:
+        View.QL_KhachHang mhKhachHang = new View.QL_KhachHang();
+        this.setVisible(false);
+        mhKhachHang.setVisible(true);
     }//GEN-LAST:event_btnKhachHangActionPerformed
     //Thanh Hieu
     private void btnDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanhThuActionPerformed
-        // TODO add your handling code here:
+        View.DoanhThu mhDoanhThu = new View.DoanhThu();
+        this.setVisible(false);
+        mhDoanhThu.setVisible(true);
     }//GEN-LAST:event_btnDoanhThuActionPerformed
     //Thanh Hieu
     private void btnQLKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLKhuyenMaiActionPerformed
-        // TODO add your handling code here:
+        View.QL_KhuyenMai mhKhuyenMai = new View.QL_KhuyenMai();
+        this.setVisible(false);
+        mhKhuyenMai.setVisible(true);
     }//GEN-LAST:event_btnQLKhuyenMaiActionPerformed
     //Thanh Hieu
     private void btnQLNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLNVActionPerformed
-        // TODO add your handling code here:
+        View.QL_NhanVien mhNhanVien = new View.QL_NhanVien();
+        this.setVisible(false);
+        mhNhanVien.setVisible(true);
     }//GEN-LAST:event_btnQLNVActionPerformed
     //Thanh Hieu
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
-        // TODO add your handling code here:
+        View.HoaDon mhHoaDon = new View.HoaDon();
+        this.setVisible(false);
+        mhHoaDon.setVisible(true);
     }//GEN-LAST:event_btnHoaDonActionPerformed
     //Thanh Hieu
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
-        // TODO add your handling code here:
+        View.QL_SanPham mhSanPham = new View.QL_SanPham();
+        this.setVisible(false);
+        mhSanPham.setVisible(true);
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
     /**
