@@ -75,5 +75,4 @@ public class SanPham {
     public void setTongSL(int tongSL) {
         this.tongSL = tongSL;
     }
-    
 }

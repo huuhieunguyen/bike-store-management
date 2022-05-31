@@ -4,22 +4,27 @@
  */
 package Process;
 
+import java.util.Date;
+
 /**
  *
  * @author Administrator
  */
 public class KhachHang {
-    private String maKH, hoTen, gioiTinh, sdt, ngSinh, diaChi;
+    private String maKH, hoTen, gioiTinh, sdt, diaChi;
+    private Date ngSinh;
 
     public KhachHang() {
     }
 
-    public KhachHang(String maKH, String hoTen, String gioiTinh, String sdt, String ngSinh, String diaChi) {
+    public KhachHang(String maKH, String hoTen, String gioiTinh, String sdt, Date ngSinh, String diaChi) {
         this.maKH = maKH;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.sdt = sdt;
-        this.ngSinh = ngSinh;
+        java.util.Date utilStartDate =ngSinh;
+            java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
+        this.ngSinh = sqlStartDate;
         this.diaChi = diaChi;
     }
 
@@ -55,12 +60,16 @@ public class KhachHang {
         this.sdt = sdt;
     }
 
-    public String getNgSinh() {
-        return ngSinh;
+    public Date getNgSinh() {
+        java.util.Date utilStartDate =this.ngSinh;
+            java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
+        return sqlStartDate;
     }
 
-    public void setNgSinh(String ngSinh) {
-        this.ngSinh = ngSinh;
+    public void setNgSinh(Date ngSinh) {
+        java.util.Date utilStartDate =ngSinh;
+            java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
+        this.ngSinh = sqlStartDate;
     }
 
     public String getDiaChi() {
