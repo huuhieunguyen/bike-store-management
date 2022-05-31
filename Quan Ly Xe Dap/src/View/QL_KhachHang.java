@@ -27,9 +27,9 @@ public class QL_KhachHang extends javax.swing.JFrame {
         loadData();
         HeaderAdjust();
     }
-
+    ///Phuong
     DefaultTableModel tbn = new DefaultTableModel();
-
+    
     public void HeaderAdjust() {
         //Set do rong cua bang
         TableKH.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
@@ -55,7 +55,7 @@ public class QL_KhachHang extends javax.swing.JFrame {
         THeader.setFont(new Font("Segoe UI", Font.BOLD, 12));
         ((DefaultTableCellRenderer) THeader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
     }
-
+    //Phuong
     public void loadData() {
         String[] columnNames = {"Mã KH", "Họ tên", "Giới tính", "Số điện thoại", "Ngày sinh", "Địa chỉ"};
         DefaultTableModel tbn = new DefaultTableModel(columnNames, 0);
@@ -64,7 +64,7 @@ public class QL_KhachHang extends javax.swing.JFrame {
             Vector row, column;
             column = new Vector();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("Select * from KHACHHANG");
+            ResultSet rs = st.executeQuery("Select * from KHACHHANG ORDER BY MAKH");
             ResultSetMetaData metadata = rs.getMetaData();
             // tra ve so cot
             number = metadata.getColumnCount();
@@ -108,7 +108,7 @@ public class QL_KhachHang extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableKH = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        btnChon = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -140,13 +140,23 @@ public class QL_KhachHang extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TableKH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableKHMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TableKH);
 
-        jButton2.setBackground(new java.awt.Color(153, 153, 153));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 255, 204));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Selection.png"))); // NOI18N
-        jButton2.setText("CHỌN");
+        btnChon.setBackground(new java.awt.Color(153, 153, 153));
+        btnChon.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnChon.setForeground(new java.awt.Color(204, 255, 204));
+        btnChon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Selection.png"))); // NOI18N
+        btnChon.setText("CHỌN");
+        btnChon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(204, 255, 153));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -196,7 +206,7 @@ public class QL_KhachHang extends javax.swing.JFrame {
                 .addGap(99, 99, 99)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnChon)
                 .addGap(29, 29, 29)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
@@ -215,15 +225,16 @@ public class QL_KhachHang extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChon, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -254,6 +265,20 @@ public class QL_KhachHang extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+    private String makh;
+    private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
+        // TODO add your handling code here:
+        if(makh != null) {
+            TT_KhachHang kh = new TT_KhachHang(makh);
+            this.setVisible(false);
+            kh.setVisible(true);
+        }
+    }//GEN-LAST:event_btnChonActionPerformed
+
+    private void TableKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableKHMouseClicked
+        // TODO add your handling code here:
+        makh = TableKH.getValueAt(TableKH.getSelectedRow(), 0) + "";
+    }//GEN-LAST:event_TableKHMouseClicked
 
     /**
      * @param args the command line arguments
@@ -293,8 +318,8 @@ public class QL_KhachHang extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableKH;
+    private javax.swing.JButton btnChon;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
