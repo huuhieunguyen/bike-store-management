@@ -92,13 +92,13 @@ public class QL_Kho extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Thanh Hieu
     private void btnQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSPActionPerformed
         View.QL_SanPham mhQLSP = new View.QL_SanPham();
         this.setVisible(false);
         mhQLSP.setVisible(true);
     }//GEN-LAST:event_btnQLSPActionPerformed
-
+    //Thanh Hieu
     private void btnBCTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBCTKActionPerformed
         View.ThongKe_Kho mhTKKho = new View.ThongKe_Kho();
         this.setVisible(false);
