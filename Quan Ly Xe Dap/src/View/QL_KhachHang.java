@@ -5,6 +5,7 @@
 package View;
 
 import ConnectDB.ConnectionUtils;
+import Process.KhachHang;
 import java.awt.Font;
 import java.util.*;
 import java.sql.*;
@@ -18,7 +19,6 @@ import javax.swing.table.JTableHeader;
  * @author User
  */
 public class QL_KhachHang extends javax.swing.JFrame {
-
     /**
      * Creates new form QL_NhanVien
      */
@@ -27,9 +27,10 @@ public class QL_KhachHang extends javax.swing.JFrame {
         loadData();
         HeaderAdjust();
     }
+    //Phuong
     ///Phuong
     DefaultTableModel tbn = new DefaultTableModel();
-    
+    //Dieu chinh bang
     public void HeaderAdjust() {
         //Set do rong cua bang
         TableKH.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
@@ -58,7 +59,7 @@ public class QL_KhachHang extends javax.swing.JFrame {
     //Phuong
     public void loadData() {
         String[] columnNames = {"Mã KH", "Họ tên", "Giới tính", "Số điện thoại", "Ngày sinh", "Địa chỉ"};
-        DefaultTableModel tbn = new DefaultTableModel(columnNames, 0);
+        tbn = new DefaultTableModel(columnNames, 0);
         try ( Connection con = ConnectionUtils.getMyConnection()) {
             int number;
             Vector row, column;
@@ -104,14 +105,14 @@ public class QL_KhachHang extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtTuKhoa = new javax.swing.JTextField();
+        cbxLoaiThongTin = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableKH = new javax.swing.JTable();
         btnChon = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnTimKiem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,19 +128,30 @@ public class QL_KhachHang extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("LOẠI THÔNG TIN");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxLoaiThongTin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã KH", "Họ tên", "SĐT" }));
+        cbxLoaiThongTin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbxLoaiThongTinMouseClicked(evt);
+            }
+        });
+        cbxLoaiThongTin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxLoaiThongTinActionPerformed(evt);
+            }
+        });
 
         TableKH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã KH", "Họ tên", "Title 3", "Title 4", "SĐT"
             }
         ));
+        TableKH.getTableHeader().setReorderingAllowed(false);
         TableKH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TableKHMouseClicked(evt);
@@ -183,7 +195,12 @@ public class QL_KhachHang extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search16x16.png"))); // NOI18N
+        btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search16x16.png"))); // NOI18N
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -197,10 +214,10 @@ public class QL_KhachHang extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2)
-                    .addComponent(jComboBox1, 0, 168, Short.MAX_VALUE))
+                    .addComponent(txtTuKhoa)
+                    .addComponent(cbxLoaiThongTin, 0, 168, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
+                .addComponent(btnTimKiem)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
@@ -223,13 +240,13 @@ public class QL_KhachHang extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxLoaiThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnTimKiem, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtTuKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -260,6 +277,7 @@ public class QL_KhachHang extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -279,6 +297,53 @@ public class QL_KhachHang extends javax.swing.JFrame {
         // TODO add your handling code here:
         makh = TableKH.getValueAt(TableKH.getSelectedRow(), 0) + "";
     }//GEN-LAST:event_TableKHMouseClicked
+
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+
+        try ( java.sql.Connection con = ConnectionUtils.getMyConnection()) {
+            String sql = null;
+            switch (cbxLoaiThongTin.getSelectedIndex()) {
+                case 0:
+                    sql = "select * from KHACHHANG WHERE UPPER(MAKH) like '%";
+                    break;
+                case 1:
+                    sql = "select * from KHACHHANG WHERE UPPER(HOTEN) like '%";
+                    break;
+                case 2:
+                    sql = "select * from KHACHHANG WHERE UPPER(SDT) like '%";
+                    break;
+                default:
+                    break;
+            }
+            sql +=txtTuKhoa.getText().toUpperCase()+"%'";
+            System.out.print(sql);
+            Statement stat = con.createStatement();
+
+            ResultSet rs = stat.executeQuery(sql);
+            tbn.setRowCount(0);
+            while (rs.next()) {
+                tbn.addRow(new Object[]{
+                    rs.getString("MAKH"),
+                    rs.getString("HOTEN"),
+                    rs.getString("GIOITINH"),
+                     rs.getString("SDT"),
+                    rs.getString("NGSINH"),
+                    rs.getString("DIACHI"),});
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+        TableKH.setModel(tbn);
+        setVisible(true);
+    }//GEN-LAST:event_btnTimKiemActionPerformed
+    private void cbxLoaiThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLoaiThongTinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxLoaiThongTinActionPerformed
+    private void cbxLoaiThongTinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxLoaiThongTinMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxLoaiThongTinMouseClicked
 
     /**
      * @param args the command line arguments
@@ -319,15 +384,15 @@ public class QL_KhachHang extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableKH;
     private javax.swing.JButton btnChon;
+    private javax.swing.JButton btnTimKiem;
+    private javax.swing.JComboBox<String> cbxLoaiThongTin;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtTuKhoa;
     // End of variables declaration//GEN-END:variables
 }
