@@ -5,8 +5,12 @@ import javax.swing.JOptionPane;
 import java.sql.* ;
 import ConnectDB.ConnectionUtils;
 import Process.KhachHang;
+import java.awt.Font;
 import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -19,7 +23,11 @@ public class TimKiemKH_HD extends javax.swing.JFrame {
         initComponents();
         showComBoBoxData();
         initTable();
+        
+        
         loadKhachHang();
+        
+        HeaderAdjust();
     }
     
     // Load du lieu (items) tu List Khach Hang trong package Process vao combobox
@@ -34,8 +42,35 @@ public class TimKiemKH_HD extends javax.swing.JFrame {
     private void initTable(){
         tblModel = new DefaultTableModel();
         String tieuDe[] = {"MAKH", "HỌ TÊN", "NGÀY SINH", "GIỚI TÍNH", 
-            "ĐỊA CHỈ", "SĐT"};
+                                                              "ĐỊA CHỈ", "SĐT"};
         tblModel.setColumnIdentifiers(tieuDe);
+    }
+    
+    // Dieu chinh do rong cot trong bang
+    public void HeaderAdjust() {
+        //Set do rong cua bang
+        tblKhachHang.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+
+        tblKhachHang.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jScrollPane1.setViewportView(tblKhachHang);
+
+        if (tblKhachHang.getColumnModel().getColumnCount() > 0) {
+            tblKhachHang.getColumnModel().getColumn(0).setMinWidth(50);
+            tblKhachHang.getColumnModel().getColumn(0).setMaxWidth(50);
+            tblKhachHang.getColumnModel().getColumn(1).setMinWidth(150);
+            tblKhachHang.getColumnModel().getColumn(1).setMaxWidth(150);
+            tblKhachHang.getColumnModel().getColumn(2).setMinWidth(150);
+            tblKhachHang.getColumnModel().getColumn(2).setMaxWidth(150);
+            tblKhachHang.getColumnModel().getColumn(3).setMinWidth(80);
+            tblKhachHang.getColumnModel().getColumn(3).setMaxWidth(80);
+            tblKhachHang.getColumnModel().getColumn(4).setMinWidth(200);
+            tblKhachHang.getColumnModel().getColumn(4).setMaxWidth(200);
+        }
+        //Set tieu de
+        JTableHeader THeader = tblKhachHang.getTableHeader();
+        THeader.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        ((DefaultTableCellRenderer) THeader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
     }
     
     // Load du lieu tu table KhachHang trong csdl len jTable
@@ -93,7 +128,7 @@ public class TimKiemKH_HD extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnTimKiem = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -2,11 +2,17 @@
 package View;
 
 import ConnectDB.ConnectionUtils;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.NumberFormat;
+import java.util.Locale;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -26,6 +32,9 @@ public class CTHD extends javax.swing.JFrame {
         initTable_CTHD();
         
         loadTableCTHD(maHD);
+        
+        // Dieu chinh do rong cot trong bang CTHD
+        HeaderAdjust();
     }
     
     // Load thong tin tu HoaDon duoc chon len textfield trong form CTHD
@@ -40,13 +49,15 @@ public class CTHD extends javax.swing.JFrame {
             ps.setString(1, maHD);
             
             ResultSet rs = ps.executeQuery();
-            
+             Locale locale = new Locale("en", "EN");
+           NumberFormat en = NumberFormat.getInstance(locale);
+           
             if(rs.next()){
                 txtCuaHang.setText(rs.getString("DIACHI"));
                 txtSDT.setText(rs.getString("SDT"));
                 txtMaHD.setText(rs.getString("MAHD"));
                 txtNgayHD.setText(rs.getString("NGHD"));
-                txtDonGia.setText(rs.getString("TRIGIA"));
+                txtDonGia.setText(en.format(rs.getLong("TRIGIA")));
                 txtNV_LapHD.setText(rs.getString("HOTEN_NV"));
                 txtKhachHang.setText(rs.getString("HOTEN_KH"));
             }
@@ -57,7 +68,7 @@ public class CTHD extends javax.swing.JFrame {
         }
     }
 
-    // Khoi tao bang Hoa Don
+    // Khoi tao bang CTHD
     private void initTable_CTHD(){
         tblModel_CTHD = new DefaultTableModel();
         String tieuDe[] = {"MÃ SP", "TÊN SP", "TRỊ GIÁ", "SỐ LƯỢNG", "THÀNH TIỀN"};
@@ -65,40 +76,31 @@ public class CTHD extends javax.swing.JFrame {
         tblCTHD.setModel(tblModel_CTHD);
     }
     
-    //Load thong tin chi tiet hhoa don len jTable CTHD
+    //Load thong tin chi tiet hoa don trong CSDL len jTable CTHD
     private void loadTableCTHD(String maHD){
-        try(Connection con = ConnectionUtils.getMyConnection()){        
-//            String query_CTHD = """
-//                           select CTHD.MASP AS MA_SP, TENSP, DONGIA, SL, 
-//                                (SP.DONGIA * CTHD.SL) AS THANHTIEN
-//                           from CTHD, SANPHAM SP
-//                           where CTHD.MASP = SP.MASP AND MAHD = ?; """;
-  String query_CTHD = """
-                           select CTHD.MASP AS MA_SP, TENSP, DONGIA, SL
+        try(Connection con = ConnectionUtils.getMyConnection()){
+            String query_CTHD = """
+                           select CTHD.MASP AS MA_SP, TENSP, DONGIA, SL, (SP.DONGIA * CTHD.SL) AS THANHTIEN
                            from CTHD, SANPHAM SP
-                           where CTHD.MASP = SP.MASP AND MAHD = ?; """;
+                           where CTHD.MASP = SP.MASP AND MAHD = ? """;
             
             PreparedStatement ps = con.prepareStatement(query_CTHD);
             ps.setString(1, maHD);
             ResultSet rs = ps.executeQuery();
             tblModel_CTHD.setRowCount(0);
             
+            Locale locale = new Locale("en", "EN");
+           NumberFormat en = NumberFormat.getInstance(locale);
+            
             while(rs.next()){
                 String[] row = new String[]{
                  rs.getString("MA_SP"),
                  rs.getString("TENSP"),
-                 rs.getString("DONGIA"),
+                 en.format(rs.getLong("DONGIA")),
                  rs.getString("SL"),
-                 rs.getString("THANHTIEN"),
+                 en.format(rs.getLong("THANHTIEN"))
                };
                tblModel_CTHD.addRow(row);
-//                txtCuaHang.setText(rs.getString("DIACHI"));
-//                txtSDT.setText(rs.getString("SDT"));
-//                txtMaHD.setText(rs.getString("MAHD"));
-//                txtNgayHD.setText(rs.getString("NGHD"));
-//                txtDonGia.setText(rs.getString("TRIGIA"));
-//                txtNV_LapHD.setText(rs.getString("HOTEN_NV"));
-//                txtKhachHang.setText(rs.getString("HOTEN_KH"));
             }
             con.close();
         }catch (Exception e){
@@ -107,6 +109,33 @@ public class CTHD extends javax.swing.JFrame {
         }
         tblCTHD.setModel(tblModel_CTHD);
         setVisible(true);
+        // Khoa cac o trong bang khong cho chinh sua
+        tblCTHD.setDefaultEditor(Object.class, null);
+    }
+    
+    // Dieu chinh do rong cot trong bang
+    public void HeaderAdjust() {
+        //Set do rong cua bang
+        tblCTHD.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+
+        tblCTHD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jScrollPane1.setViewportView(tblCTHD);
+
+        if (tblCTHD.getColumnModel().getColumnCount() > 0) {
+            tblCTHD.getColumnModel().getColumn(0).setMinWidth(50);
+            tblCTHD.getColumnModel().getColumn(0).setMaxWidth(50);
+            tblCTHD.getColumnModel().getColumn(1).setMinWidth(150);
+            tblCTHD.getColumnModel().getColumn(1).setMaxWidth(150);
+            tblCTHD.getColumnModel().getColumn(2).setMinWidth(80);
+            tblCTHD.getColumnModel().getColumn(2).setMaxWidth(80);
+            tblCTHD.getColumnModel().getColumn(3).setMinWidth(100);
+            tblCTHD.getColumnModel().getColumn(3).setMaxWidth(100);
+        }
+        //Set tieu de
+        JTableHeader THeader = tblCTHD.getTableHeader();
+        THeader.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        ((DefaultTableCellRenderer) THeader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -289,7 +318,7 @@ public class CTHD extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tbnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,7 +364,7 @@ public class CTHD extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(txtTienTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

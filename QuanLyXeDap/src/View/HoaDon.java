@@ -5,8 +5,14 @@ import javax.swing.JOptionPane;
 import java.sql.* ;
 import ConnectDB.ConnectionUtils;
 import Process.Hoa_Don;
+import java.awt.Font;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -30,6 +36,9 @@ public class HoaDon extends javax.swing.JFrame {
         // Load du lieu tu table HoaDon trong csdl len jTable
         loadHoaDon();
         
+        // Dieu chinh do rong cot trong bang HD
+        HeaderAdjust();
+        
         // Load MaHD len combobox de tra cuu CTHD
         initComboBox_HD();
     }
@@ -45,7 +54,7 @@ public class HoaDon extends javax.swing.JFrame {
     // Khoi tao bang Hoa Don
     private void initTable_HD(){
         tblModel = new DefaultTableModel();
-        String tieuDe[] = {"MAHD", "NGHD", "MAKH", "MANV", "TRIGIA", "MAKM"};
+        String tieuDe[] = {"MAHD", "NGHD", "MAKH", "MANV", "MAKM", "TRIGIA"};
         tblModel.setColumnIdentifiers(tieuDe);
     }
     
@@ -56,6 +65,8 @@ public class HoaDon extends javax.swing.JFrame {
            PreparedStatement ps = con.prepareStatement(queryHD);
            ResultSet rs = ps.executeQuery();
            
+           Locale locale = new Locale("en", "EN");
+           NumberFormat en = NumberFormat.getInstance(locale);
            // Xoa toan bo dong du lieu trong table
            tblModel.setRowCount(0);
            while(rs.next()){
@@ -64,8 +75,8 @@ public class HoaDon extends javax.swing.JFrame {
                  rs.getString("NGHD"),
                  rs.getString("MAKH"), 
                  rs.getString("MANV"),
-                 rs.getString("TRIGIA"),
-                 rs.getString("MAKM")
+                 rs.getString("MAKM"),
+                 en.format(rs.getLong("TRIGIA"))
                };
                tblModel.addRow(row);
            }
@@ -81,6 +92,34 @@ public class HoaDon extends javax.swing.JFrame {
         // Gan tblModel vao jTable tblHoaDon
         tblHoaDon.setModel(tblModel);
         setVisible(true);
+        tblHoaDon.setDefaultEditor(Object.class, null);
+    }
+    
+    // Dieu chinh do rong cot trong bang
+    public void HeaderAdjust() {
+        //Set do rong cua bang
+        tblHoaDon.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+
+        tblHoaDon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jScrollPane1.setViewportView(tblHoaDon);
+
+        if (tblHoaDon.getColumnModel().getColumnCount() > 0) {
+            tblHoaDon.getColumnModel().getColumn(0).setMinWidth(50);
+            tblHoaDon.getColumnModel().getColumn(0).setMaxWidth(50);
+            tblHoaDon.getColumnModel().getColumn(1).setMinWidth(150);
+            tblHoaDon.getColumnModel().getColumn(1).setMaxWidth(150);
+            tblHoaDon.getColumnModel().getColumn(2).setMinWidth(80);
+            tblHoaDon.getColumnModel().getColumn(2).setMaxWidth(80);
+            tblHoaDon.getColumnModel().getColumn(3).setMinWidth(100);
+            tblHoaDon.getColumnModel().getColumn(3).setMaxWidth(100);
+            tblHoaDon.getColumnModel().getColumn(4).setMinWidth(120);
+            tblHoaDon.getColumnModel().getColumn(4).setMaxWidth(120);
+        }
+        //Set tieu de
+        JTableHeader THeader = tblHoaDon.getTableHeader();
+        THeader.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        ((DefaultTableCellRenderer) THeader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
     }
     
     // Load MaHD len combobox de tra cuu CTHD
