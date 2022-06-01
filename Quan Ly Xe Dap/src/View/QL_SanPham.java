@@ -20,7 +20,7 @@ import javax.swing.table.JTableHeader;
  * @author User
  */
 public class QL_SanPham extends javax.swing.JFrame {
-
+    DefaultTableModel tbn = new DefaultTableModel();
     /**
      * Creates new form QL_NhanVien
      */
@@ -30,7 +30,7 @@ public class QL_SanPham extends javax.swing.JFrame {
         HeaderAdjust();
 
     }
-    
+
     //Phuong
     public void HeaderAdjust() {
         //Set do rong cua bang
@@ -61,7 +61,7 @@ public class QL_SanPham extends javax.swing.JFrame {
     public void loadData() {
         //Set ten bang
         String[] columnNames = {"Mã SP", "Tên sản phẩm", "Đơn vị tính", "Nước sản xuất", "Đơn giá", "Tổng số lượng"};
-        DefaultTableModel tbn = new DefaultTableModel(columnNames, 0);
+        tbn = new DefaultTableModel(columnNames, 0);
         //Tao ket noi voi SQL
         try ( Connection con = ConnectionUtils.getMyConnection()) {
             int number;
@@ -103,8 +103,8 @@ public class QL_SanPham extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtSearch = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtTuKhoa = new javax.swing.JTextField();
+        cbxLoaiThongTin = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableSP = new javax.swing.JTable();
         btnChon = new javax.swing.JButton();
@@ -128,7 +128,7 @@ public class QL_SanPham extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("LOẠI THÔNG TIN");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã sản phẩm", "Tên sản phẩm", "Nước sản xuất" }));
+        cbxLoaiThongTin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã SP", "Tên sản phẩm", "Nước sản xuất" }));
 
         TableSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -158,6 +158,7 @@ public class QL_SanPham extends javax.swing.JFrame {
         });
         TableSP.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         TableSP.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TableSP.getTableHeader().setReorderingAllowed(false);
         TableSP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TableSPMouseClicked(evt);
@@ -242,8 +243,8 @@ public class QL_SanPham extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtSearch)
-                            .addComponent(jComboBox1, 0, 168, Short.MAX_VALUE))
+                            .addComponent(txtTuKhoa)
+                            .addComponent(cbxLoaiThongTin, 0, 168, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearch))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -259,13 +260,13 @@ public class QL_SanPham extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxLoaiThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSearch)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtTuKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -304,6 +305,43 @@ public class QL_SanPham extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        try ( java.sql.Connection con = ConnectionUtils.getMyConnection()) {
+            String sql = null;
+            switch (cbxLoaiThongTin.getSelectedIndex()) {
+                case 0:
+                    sql = "select * from SANPHAM WHERE UPPER(MASP) like '%";
+                    break;
+                case 1:
+                    sql = "select * from SANPHAM WHERE UPPER(TENSP) like '%";
+                    break;
+                case 2:
+                    sql = "select * from SANPHAM WHERE UPPER(NUOCSX) like '%";
+                    break;
+                default:
+                    break;
+            }
+            sql +=txtTuKhoa.getText().toUpperCase()+"%'";
+            System.out.print(sql);
+            Statement stat = con.createStatement();
+
+            ResultSet rs = stat.executeQuery(sql);
+            tbn.setRowCount(0);
+            while (rs.next()) {
+                tbn.addRow(new Object[]{
+                    rs.getString("MASP"),
+                    rs.getString("TENSP"),
+                    rs.getString("DVT"),
+                     rs.getString("NUOCSX"),
+                    rs.getString("DONGIA"),
+                    rs.getString("TONGSL"),});
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+        TableSP.setModel(tbn);
+        setVisible(true);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private String masp;
@@ -362,14 +400,14 @@ public class QL_SanPham extends javax.swing.JFrame {
     public javax.swing.JTable TableSP;
     private javax.swing.JButton btnChon;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox<String> cbxLoaiThongTin;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtTuKhoa;
     // End of variables declaration//GEN-END:variables
 }
