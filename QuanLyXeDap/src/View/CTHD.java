@@ -89,7 +89,7 @@ public class CTHD extends javax.swing.JFrame {
                  rs.getString("TENSP"),
                  rs.getString("DONGIA"),
                  rs.getString("SL"),
-//                 rs.getString("THANHTIEN"),
+                 rs.getString("THANHTIEN"),
                };
                tblModel_CTHD.addRow(row);
 //                txtCuaHang.setText(rs.getString("DIACHI"));
