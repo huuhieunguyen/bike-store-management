@@ -280,7 +280,7 @@ public class TT_SanPham extends javax.swing.JFrame {
             SanPhamDao dao= new SanPhamDao();
             dao.update(sp);
             
-            JOptionPane.showMessageDialog(this, "Thong tin san pham da duoc sua doi va luu vao CSDL");
+            JOptionPane.showMessageDialog(this, "Sua thanh cong");
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "Error" +e.getMessage());
             e.printStackTrace();
@@ -308,7 +308,8 @@ public class TT_SanPham extends javax.swing.JFrame {
             SanPhamDao dao= new SanPhamDao();
             dao.delete(sp);
             
-            JOptionPane.showMessageDialog(this, "San pham da duoc xoa thanh cong");
+            JOptionPane.showMessageDialog(this, "Xoa thanh cong");
+            this.dispose();
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "Error" +e.getMessage());
             e.printStackTrace();

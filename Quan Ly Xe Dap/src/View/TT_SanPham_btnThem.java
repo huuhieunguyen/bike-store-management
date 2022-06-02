@@ -230,7 +230,7 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
             SanPham sp = new SanPham();
             sp.setMaSP(txtMaSP.getText());
             if (sp.getMaSP().length() > 2) {
-                JOptionPane.showMessageDialog(this, "Chi duoc nhap 1-2 ky tu", "THÔNG BÁO",
+                JOptionPane.showMessageDialog(this, "Chỉ được nhập 1-2 ký tự", "THÔNG BÁO",
                         JOptionPane.OK_OPTION);
             } else {
                 if (sp.getMaSP().length() == 1) {
@@ -243,7 +243,7 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
 
                 SanPhamDao dao = new SanPhamDao();
                 dao.insert(sp);
-                JOptionPane.showMessageDialog(this, "Them thanh cong");
+                JOptionPane.showMessageDialog(this, "Thêm thành công");
             }
             
         } catch (Exception e) {
