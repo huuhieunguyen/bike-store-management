@@ -4,6 +4,8 @@
  */
 package View;
 
+import Process.Menu;
+
 /**
  *
  * @author User
@@ -13,6 +15,17 @@ public class Menu_QLCH extends javax.swing.JFrame {
     /**
      * Creates new form Menu_QLCH
      */
+    private String manv;
+    public Menu_QLCH(String ma_nv) {
+        initComponents();
+        manv=ma_nv;
+        labelmanv.setText(manv);
+        Menu m = new Menu();
+        labelTennv.setText(m.getTennv(manv));
+        labelmach.setText(m.getMadv(manv));
+        labelDiaChi.setText(m.getDiaChiCH(m.getMadv(manv)));
+    }
+
     public Menu_QLCH() {
         initComponents();
     }
@@ -29,12 +42,12 @@ public class Menu_QLCH extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelTennv = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        labelmanv = new javax.swing.JLabel();
+        labelmach = new javax.swing.JLabel();
+        labelDiaChi = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -64,12 +77,12 @@ public class Menu_QLCH extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 153));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Avatar.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Avatar 2.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("TÊN NHÂN VIÊN");
+        labelTennv.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        labelTennv.setForeground(new java.awt.Color(0, 51, 51));
+        labelTennv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTennv.setText("TÊN NHÂN VIÊN");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 102, 102));
@@ -85,17 +98,17 @@ public class Menu_QLCH extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("MANV (auto)");
+        labelmanv.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelmanv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelmanv.setText("MANV (auto)");
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("MACH (auto)");
+        labelmach.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelmach.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelmach.setText("MACH (auto)");
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("DIA CHI CH (auto)");
+        labelDiaChi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelDiaChi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelDiaChi.setText("DIA CHI CH (auto)");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -104,11 +117,11 @@ public class Menu_QLCH extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(83, 83, 83))
+                .addGap(59, 59, 59))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTennv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
@@ -118,10 +131,10 @@ public class Menu_QLCH extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(74, 74, 74)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelmanv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(labelDiaChi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelmach, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGap(74, 74, 74)))
         );
         jPanel2Layout.setVerticalGroup(
@@ -130,7 +143,7 @@ public class Menu_QLCH extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelTennv, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 345, Short.MAX_VALUE)
@@ -139,11 +152,11 @@ public class Menu_QLCH extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(284, 284, 284)
-                    .addComponent(jLabel13)
+                    .addComponent(labelmanv)
                     .addGap(18, 18, 18)
-                    .addComponent(jLabel14)
+                    .addComponent(labelmach)
                     .addGap(18, 18, 18)
-                    .addComponent(jLabel15)
+                    .addComponent(labelDiaChi)
                     .addContainerGap(284, Short.MAX_VALUE)))
         );
 
@@ -158,7 +171,7 @@ public class Menu_QLCH extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Nếu bạn chậm Deadline thì hãy chạy cho nhanh vào!!!");
+        jLabel5.setText("Green life in Green city with green bicycles");
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -599,10 +612,6 @@ public class Menu_QLCH extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -620,5 +629,9 @@ public class Menu_QLCH extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel labelDiaChi;
+    private javax.swing.JLabel labelTennv;
+    private javax.swing.JLabel labelmach;
+    private javax.swing.JLabel labelmanv;
     // End of variables declaration//GEN-END:variables
 }
