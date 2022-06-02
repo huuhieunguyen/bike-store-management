@@ -125,8 +125,8 @@ public class CTHD extends javax.swing.JFrame {
         if (tblCTHD.getColumnModel().getColumnCount() > 0) {
             tblCTHD.getColumnModel().getColumn(0).setMinWidth(50);
             tblCTHD.getColumnModel().getColumn(0).setMaxWidth(50);
-            tblCTHD.getColumnModel().getColumn(1).setMinWidth(150);
-            tblCTHD.getColumnModel().getColumn(1).setMaxWidth(150);
+            tblCTHD.getColumnModel().getColumn(1).setMinWidth(300);
+            tblCTHD.getColumnModel().getColumn(1).setMaxWidth(300);
             tblCTHD.getColumnModel().getColumn(2).setMinWidth(80);
             tblCTHD.getColumnModel().getColumn(2).setMaxWidth(80);
             tblCTHD.getColumnModel().getColumn(3).setMinWidth(100);

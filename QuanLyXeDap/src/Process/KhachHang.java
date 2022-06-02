@@ -9,7 +9,7 @@ import java.util.List;
  * @author Nguyen Huu Hieu
  */
 public class KhachHang {
-    // Tao List Khach Hang
+    // Tao List thuoc tinh Khach Hang
     private static List<String> KhachHang = new ArrayList<>();
     // Them cac thuoc tinh (phan tu) vao List Khach Hang
     public static List<String> getDataKH(){
