@@ -39,18 +39,23 @@ begin
     return rc;
 end;
 -- Cursor DS Xuat kho
-create or replace FUNCTION func_ktDangNhap (tendangnhap TAIKHOAN.TENDN%TYPE, mk TAIKHOAN.MATKHAU%TYPE)
-                        RETURN INT
+create or replace function func_ktsl_xuatkho (ma_sp CTTON.MASP%TYPE)
+                                        RETURN INT
 AS
-    tai_khoan TAIKHOAN%ROWTYPE;
+    dem INT;
+    slkho INT;
 BEGIN
-    SELECT * INTO tai_khoan
-    FROM TAIKHOAN
-    WHERE TENDN = tendangnhap AND MATKHAU = mk;
-    RETURN tai_khoan.VAITRO;
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            RETURN -1;
+    SELECT DISTINCT SL_KHO INTO slkho
+    FROM CTTON
+    WHERE MASP = ma_sp;
+    SELECT SUM(10 - SL_CH) INTO dem
+    FROM CTTON
+    WHERE MASP = ma_sp AND SL_CH < 5;
+    IF(slkho >= dem) THEN
+        RETURN 1;
+    ELSE 
+        RETURN 0;
+    END IF;
 END;
 
 create or replace function func_ds_xuatkho return sys_refcursor is
