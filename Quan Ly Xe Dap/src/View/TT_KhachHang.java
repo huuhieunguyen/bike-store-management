@@ -269,7 +269,7 @@ public class TT_KhachHang extends javax.swing.JFrame {
         
         StringBuilder sb = new StringBuilder();
         if(txtMaKH.getText().equals("")){
-            sb.append("Ma khach hang khong duoc de trong");
+            sb.append("Mã khách hàng không được để trống");
             txtMaKH.setBackground(Color.red);
         }else{
             txtMaKH.setBackground(Color.white);
@@ -290,7 +290,8 @@ public class TT_KhachHang extends javax.swing.JFrame {
             KhachHangDao dao= new KhachHangDao();
             dao.update(kh);
             
-            JOptionPane.showMessageDialog(this, " Thong tin khach hang da duoc sua doi va luu vao CSDL");
+            JOptionPane.showMessageDialog(this, "Sửa thành công");
+            
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "Error" +e.getMessage());
             e.printStackTrace();
@@ -301,7 +302,7 @@ public class TT_KhachHang extends javax.swing.JFrame {
         // TODO add your handling code here:
         StringBuilder sb = new StringBuilder();
         if(txtMaKH.getText().equals("")){
-            sb.append("Ma khach hang khong duoc de trong");
+            sb.append("Mã khách hàng không được để trống");
             txtMaKH.setBackground(Color.red);
         }else{
             txtMaKH.setBackground(Color.white);
@@ -318,7 +319,8 @@ public class TT_KhachHang extends javax.swing.JFrame {
             KhachHangDao dao= new KhachHangDao();
             dao.delete(kh);
             
-            JOptionPane.showMessageDialog(this, "San pham da duoc xoa thanh cong");
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
+            this.dispose();
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "Error" +e.getMessage());
             e.printStackTrace();

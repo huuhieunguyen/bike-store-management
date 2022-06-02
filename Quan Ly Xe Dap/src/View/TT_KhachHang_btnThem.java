@@ -28,6 +28,7 @@ public class TT_KhachHang_btnThem extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(TT_KhachHang_btnThem.class.getName()).log(Level.SEVERE, null, ex);
         }
+        txtMaKH.setEditable(false);
     }
 
     /**
@@ -238,7 +239,6 @@ public class TT_KhachHang_btnThem extends javax.swing.JFrame {
         KhachHangDao k = new KhachHangDao();
         java.util.Date utilStartDate1 =txtNgSinh.getDate();
         java.sql.Date ngsinhDate = new java.sql.Date(utilStartDate1.getTime());
-        
         String gioitinh = rdbNam.isSelected()? "Nam":"Nu";
         int i = k.insert(txtMaKH.getText(),txtHoTen.getText(), gioitinh, txtSDT.getText(), ngsinhDate, txtDiaChi.getText());
         
