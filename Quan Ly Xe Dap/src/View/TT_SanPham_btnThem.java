@@ -40,18 +40,21 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+<<<<<<< HEAD
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         btnQuayLai = new javax.swing.JButton();
+=======
         txtTenSP = new javax.swing.JTextField();
         txtMaSP = new javax.swing.JTextField();
         txtDVT = new javax.swing.JTextField();
         txtNSX = new javax.swing.JTextField();
         txtDonGia = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
+>>>>>>> DoAn_Java
         btnThem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,6 +83,7 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("ĐƠN GIÁ");
 
+<<<<<<< HEAD
         jFormattedTextField1.setText("jFormattedTextField1");
 
         btnQuayLai.setBackground(new java.awt.Color(204, 204, 204));
@@ -91,6 +95,7 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
         btnQuayLai.setMinimumSize(new java.awt.Dimension(131, 38));
         btnQuayLai.setPreferredSize(new java.awt.Dimension(131, 38));
         btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
+=======
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(51, 51, 51));
@@ -173,8 +178,11 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
                     .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< HEAD
                     .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> DoAn_Java
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
@@ -194,6 +202,7 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+<<<<<<< HEAD
     //Thanh Hieu
     private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
         View.QL_SanPham mhQLSP = new View.QL_SanPham();
@@ -203,6 +212,7 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
     //Thanh Hieu
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         
+=======
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -273,6 +283,7 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
             e.printStackTrace();
         }
+>>>>>>> DoAn_Java
     }//GEN-LAST:event_btnThemActionPerformed
 
     /**
@@ -312,11 +323,14 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JButton btnQuayLai;
     private javax.swing.JButton btnThem;
     private javax.swing.JFormattedTextField jFormattedTextField1;
+=======
     private javax.swing.JButton btnThem;
     private javax.swing.JButton jButton1;
+>>>>>>> DoAn_Java
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

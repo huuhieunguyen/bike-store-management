@@ -55,16 +55,19 @@
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
+<<<<<<< HEAD
                               <Component id="jTextField1" max="32767" attributes="0"/>
                               <Component id="jTextField2" max="32767" attributes="0"/>
                               <Component id="jTextField3" max="32767" attributes="0"/>
                               <Component id="jTextField4" max="32767" attributes="0"/>
                               <Component id="jFormattedTextField1" pref="195" max="32767" attributes="0"/>
+=======
                               <Component id="txtTenSP" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtMaSP" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtDonGia" pref="180" max="32767" attributes="0"/>
                               <Component id="txtNSX" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtDVT" alignment="0" max="32767" attributes="0"/>
+>>>>>>> DoAn_Java
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -180,6 +183,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">
         </Component>
+<<<<<<< HEAD
         <Component class="javax.swing.JTextField" name="jTextField3">
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField4">
@@ -188,6 +192,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="jFormattedTextField1"/>
           </Properties>
+=======
         <Component class="javax.swing.JTextField" name="txtDVT">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDVTActionPerformed"/>
@@ -197,6 +202,7 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNSXActionPerformed"/>
           </Events>
+>>>>>>> DoAn_Java
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>

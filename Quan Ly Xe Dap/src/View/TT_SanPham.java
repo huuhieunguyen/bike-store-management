@@ -43,6 +43,7 @@ public class TT_SanPham extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+<<<<<<< HEAD
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -51,6 +52,7 @@ public class TT_SanPham extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+=======
         txtTenSP = new javax.swing.JTextField();
         txtMaSP = new javax.swing.JTextField();
         txtDVT = new javax.swing.JTextField();
@@ -59,6 +61,7 @@ public class TT_SanPham extends javax.swing.JFrame {
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         txtDonGia = new javax.swing.JTextField();
+>>>>>>> DoAn_Java
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,7 +89,9 @@ public class TT_SanPham extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("ĐƠN GIÁ");
 
+<<<<<<< HEAD
         jFormattedTextField1.setText("jFormattedTextField1");
+=======
         txtDVT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDVTActionPerformed(evt);
@@ -98,6 +103,7 @@ public class TT_SanPham extends javax.swing.JFrame {
                 txtNSXActionPerformed(evt);
             }
         });
+>>>>>>> DoAn_Java
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -158,26 +164,32 @@ public class TT_SanPham extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+<<<<<<< HEAD
                             .addComponent(jTextField1)
                             .addComponent(jTextField2)
                             .addComponent(jTextField3)
                             .addComponent(jTextField4)
                             .addComponent(jFormattedTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
+=======
                             .addComponent(txtTenSP)
                             .addComponent(txtMaSP)
                             .addComponent(txtDonGia, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                             .addComponent(txtNSX)
                             .addComponent(txtDVT)))
+>>>>>>> DoAn_Java
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(152, 152, 152)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
+<<<<<<< HEAD
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
                         .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+>>>>>>> DoAn_Java
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,6 +244,7 @@ public class TT_SanPham extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+<<<<<<< HEAD
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -239,6 +252,7 @@ public class TT_SanPham extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+=======
     //Phuong
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
@@ -300,6 +314,7 @@ public class TT_SanPham extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnXoaActionPerformed
+>>>>>>> DoAn_Java
 
     private void txtNSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNSXActionPerformed
         // TODO add your handling code here:
@@ -359,14 +374,17 @@ public class TT_SanPham extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+<<<<<<< HEAD
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+=======
     private javax.swing.JTextField txtDVT;
     private javax.swing.JTextField txtDonGia;
     private javax.swing.JTextField txtMaSP;
     private javax.swing.JTextField txtNSX;
     private javax.swing.JTextField txtTenSP;
+>>>>>>> DoAn_Java
     // End of variables declaration//GEN-END:variables
 }

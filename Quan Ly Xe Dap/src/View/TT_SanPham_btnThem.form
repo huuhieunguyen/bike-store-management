@@ -105,8 +105,11 @@
                   </Group>
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+<<<<<<< HEAD
                       <Component id="btnQuayLai" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+=======
                       <Component id="jButton1" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+>>>>>>> DoAn_Java
                       <Component id="btnThem" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="54" max="32767" attributes="0"/>

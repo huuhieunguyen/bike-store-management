@@ -4,6 +4,8 @@
  */
 package View;
 
+<<<<<<< HEAD
+=======
 import ConnectDB.ConnectionUtils;
 import java.awt.Font;
 import java.util.*;
@@ -15,6 +17,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+>>>>>>> DoAn_Java
 /**
  *
  * @author User
@@ -26,6 +29,8 @@ public class QL_SanPham extends javax.swing.JFrame {
      */
     public QL_SanPham() {
         initComponents();
+<<<<<<< HEAD
+=======
         loadData();
         HeaderAdjust();
 
@@ -88,6 +93,7 @@ public class QL_SanPham extends javax.swing.JFrame {
         }
         //Khong cho user edit
         TableSP.setDefaultEditor(Object.class, null);
+>>>>>>> DoAn_Java
     }
 
     /**
@@ -103,6 +109,7 @@ public class QL_SanPham extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+<<<<<<< HEAD
         jTextField2 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
@@ -111,6 +118,7 @@ public class QL_SanPham extends javax.swing.JFrame {
         btnChon = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
         btnQuayLai = new javax.swing.JButton();
+=======
         txtTuKhoa = new javax.swing.JTextField();
         cbxLoaiThongTin = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -119,6 +127,7 @@ public class QL_SanPham extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
+>>>>>>> DoAn_Java
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,13 +145,16 @@ public class QL_SanPham extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("LOẠI THÔNG TIN");
 
+<<<<<<< HEAD
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
+=======
         cbxLoaiThongTin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã SP", "Tên sản phẩm", "Nước sản xuất" }));
+>>>>>>> DoAn_Java
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search.png"))); // NOI18N
 
@@ -159,6 +171,8 @@ public class QL_SanPham extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+<<<<<<< HEAD
+=======
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
@@ -189,12 +203,14 @@ public class QL_SanPham extends javax.swing.JFrame {
             TableSP.getColumnModel().getColumn(4).setMaxWidth(120);
         }
 
+>>>>>>> DoAn_Java
         btnChon.setBackground(new java.awt.Color(153, 153, 153));
         btnChon.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnChon.setForeground(new java.awt.Color(204, 255, 204));
         btnChon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Selection.png"))); // NOI18N
         btnChon.setText("CHỌN");
         btnChon.addActionListener(new java.awt.event.ActionListener() {
+<<<<<<< HEAD
 =======
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChonActionPerformed(evt);
@@ -207,6 +223,7 @@ public class QL_SanPham extends javax.swing.JFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Add.png"))); // NOI18N
         jButton3.setText("THÊM");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> DoAn_Java
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChonActionPerformed(evt);
             }
@@ -256,18 +273,23 @@ public class QL_SanPham extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
+<<<<<<< HEAD
                 .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+=======
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
+>>>>>>> DoAn_Java
                 .addComponent(btnChon)
                 .addGap(29, 29, 29)
                 .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
+<<<<<<< HEAD
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48))
+=======
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -285,6 +307,7 @@ public class QL_SanPham extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> DoAn_Java
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,6 +317,7 @@ public class QL_SanPham extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
+<<<<<<< HEAD
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -302,6 +326,7 @@ public class QL_SanPham extends javax.swing.JFrame {
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4))
                 .addGap(29, 29, 29)
+=======
                     .addComponent(cbxLoaiThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,14 +335,18 @@ public class QL_SanPham extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addComponent(txtTuKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45)
+>>>>>>> DoAn_Java
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnChon, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> DoAn_Java
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -338,6 +367,7 @@ public class QL_SanPham extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+<<<<<<< HEAD
     //Thanh Hieu
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         View.TT_SanPham_btnThem mhThemSP = new View.TT_SanPham_btnThem();
@@ -358,6 +388,7 @@ public class QL_SanPham extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
+=======
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -421,6 +452,7 @@ public class QL_SanPham extends javax.swing.JFrame {
             sp.setVisible(true);
         }
     }//GEN-LAST:event_btnChonActionPerformed
+>>>>>>> DoAn_Java
 
     /**
      * @param args the command line arguments
@@ -461,24 +493,30 @@ public class QL_SanPham extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JButton btnChon;
     private javax.swing.JButton btnQuayLai;
     private javax.swing.JButton btnThem;
     private javax.swing.JComboBox<String> jComboBox1;
+=======
     public javax.swing.JTable TableSP;
     private javax.swing.JButton btnChon;
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cbxLoaiThongTin;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+>>>>>>> DoAn_Java
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+<<<<<<< HEAD
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
+=======
     private javax.swing.JTextField txtTuKhoa;
+>>>>>>> DoAn_Java
     // End of variables declaration//GEN-END:variables
 }

@@ -67,16 +67,19 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <Component id="btnQuayLai" min="-2" pref="144" max="-2" attributes="0"/>
                   <EmptySpace pref="248" max="32767" attributes="0"/>
 =======
                   <Component id="jButton1" min="-2" pref="144" max="-2" attributes="0"/>
                   <EmptySpace pref="296" max="32767" attributes="0"/>
+>>>>>>> DoAn_Java
                   <Component id="btnChon" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="btnThem" min="-2" pref="108" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
               </Group>
+<<<<<<< HEAD
               <Group type="102" alignment="1" attributes="0">
 =======
               <Group type="102" attributes="0">
@@ -100,6 +103,7 @@
                           <Component id="jScrollPane1" min="-2" pref="747" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+>>>>>>> DoAn_Java
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="747" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
@@ -116,6 +120,7 @@
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbxLoaiThongTin" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+<<<<<<< HEAD
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -131,17 +136,20 @@
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtTuKhoa" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+>>>>>>> DoAn_Java
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnChon" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+<<<<<<< HEAD
                       <Component id="btnThem" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="btnQuayLai" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
 =======
                       <Component id="jButton3" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+>>>>>>> DoAn_Java
                   </Group>
                   <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
@@ -185,6 +193,7 @@
         <Component class="javax.swing.JComboBox" name="cbxLoaiThongTin">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+<<<<<<< HEAD
               <StringArray count="4">
                 <StringItem index="0" value="Item 1"/>
                 <StringItem index="1" value="Item 2"/>
