@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -60,6 +60,11 @@
                               <Component id="jTextField3" max="32767" attributes="0"/>
                               <Component id="jTextField4" max="32767" attributes="0"/>
                               <Component id="jFormattedTextField1" pref="195" max="32767" attributes="0"/>
+                              <Component id="txtTenSP" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtMaSP" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtDonGia" pref="180" max="32767" attributes="0"/>
+                              <Component id="txtNSX" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtDVT" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -71,7 +76,7 @@
                           <Component id="jButton3" min="-2" pref="119" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -183,6 +188,15 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="jFormattedTextField1"/>
           </Properties>
+        <Component class="javax.swing.JTextField" name="txtDVT">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDVTActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNSX">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNSXActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
@@ -270,6 +284,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtDonGia">
         </Component>
       </SubComponents>
     </Container>

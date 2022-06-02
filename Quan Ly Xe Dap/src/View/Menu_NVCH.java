@@ -66,11 +66,24 @@ public class Menu_NVCH extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("NHÂN VIÊN CỬA HÀNG");
 
+<<<<<<< HEAD
         btnDangXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDangXuat.setForeground(new java.awt.Color(255, 0, 51));
         btnDangXuat.setText("ĐĂNG XUẤT");
         btnDangXuat.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+=======
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 0, 51));
+        jButton1.setText("ĐĂNG XUẤT");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> DoAn_Java
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDangXuatActionPerformed(evt);
             }
@@ -318,8 +331,15 @@ public class Menu_NVCH extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     //Thanh Hieu
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+=======
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+>>>>>>> DoAn_Java
 
         View.DangNhap login = new View.DangNhap();
         this.setVisible(false);
@@ -343,6 +363,11 @@ public class Menu_NVCH extends javax.swing.JFrame {
         this.setVisible(false);
         mhSanPham.setVisible(true);
     }//GEN-LAST:event_btnSanPhamActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        View.DangNhap.getWindows();
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,13 @@
  */
 package View;
 
+import Process.SanPham;
+import Process.SanPhamDao;
+import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
@@ -39,6 +46,12 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         btnQuayLai = new javax.swing.JButton();
+        txtTenSP = new javax.swing.JTextField();
+        txtMaSP = new javax.swing.JTextField();
+        txtDVT = new javax.swing.JTextField();
+        txtNSX = new javax.swing.JTextField();
+        txtDonGia = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,7 +66,7 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("MÃ SẢN PHẨM ");
+        jLabel3.setText("KÍ TỰ VIẾT TẮT");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -78,6 +91,16 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
         btnQuayLai.setMinimumSize(new java.awt.Dimension(131, 38));
         btnQuayLai.setPreferredSize(new java.awt.Dimension(131, 38));
         btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Backward (black).png"))); // NOI18N
+        jButton1.setText("QUAY LẠI ");
+        jButton1.setMaximumSize(new java.awt.Dimension(131, 38));
+        jButton1.setMinimumSize(new java.awt.Dimension(131, 38));
+        jButton1.setPreferredSize(new java.awt.Dimension(131, 38));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> DoAn_Java
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuayLaiActionPerformed(evt);
             }
@@ -111,11 +134,11 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
+                            .addComponent(txtTenSP)
+                            .addComponent(txtMaSP)
+                            .addComponent(txtDVT)
+                            .addComponent(txtNSX)
+                            .addComponent(txtDonGia, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(189, 189, 189)
                         .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,26 +154,27 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDVT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
@@ -179,6 +203,76 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
     //Thanh Hieu
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(this, sb);
+            return;
+        }
+
+        try {
+            SanPham sp = new SanPham();
+            sp.setMaSP(txtMaSP.getText());
+            if (sp.getMaSP().length() > 2) {
+                JOptionPane.showMessageDialog(this, "Chi duoc nhap 1-2 ky tu", "THÔNG BÁO",
+                        JOptionPane.OK_OPTION);
+            } else {
+                if (sp.getMaSP().length() == 1) {
+                    sp.setMaSP(txtMaSP.getText() + "0");
+                }
+                sp.setTenSP(txtTenSP.getText());
+                sp.setDvt(txtDVT.getText());
+                sp.setNuocSX(txtNSX.getText());
+                sp.setDonGia(Float.parseFloat(txtDonGia.getText()));
+
+                SanPhamDao dao = new SanPhamDao();
+                dao.insert(sp);
+                JOptionPane.showMessageDialog(this, "Them thanh cong");
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    //Phuong
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if (txtMaSP.getText().equals("")) {
+            sb.append("Ma san pham khong duoc de trong");
+            txtMaSP.setBackground(Color.red);
+        } else {
+            txtMaSP.setBackground(Color.white);
+        }
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(this, sb);
+            return;
+        }
+
+        try {
+            SanPham sp = new SanPham();
+            sp.setMaSP(txtMaSP.getText());
+            sp.setTenSP(txtTenSP.getText());
+            sp.setDvt(txtDVT.getText());
+            sp.setNuocSX(txtNSX.getText());
+            sp.setDonGia(Float.parseFloat(txtDonGia.getText()));
+
+            SanPhamDao dao = new SanPhamDao();
+            dao.insert(sp);
+
+            JOptionPane.showMessageDialog(this, "Them thanh cong!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     /**
@@ -221,6 +315,8 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
     private javax.swing.JButton btnQuayLai;
     private javax.swing.JButton btnThem;
     private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -228,9 +324,10 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtDVT;
+    private javax.swing.JFormattedTextField txtDonGia;
+    private javax.swing.JTextField txtMaSP;
+    private javax.swing.JTextField txtNSX;
+    private javax.swing.JTextField txtTenSP;
     // End of variables declaration//GEN-END:variables
 }

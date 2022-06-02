@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-
+import Process.SanPham;
+import Process.SanPhamDao;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 /**
  *
  * @author User
@@ -13,8 +16,15 @@ public class TT_SanPham extends javax.swing.JFrame {
     /**
      * Creates new form TT_SanPham
      */
-    public TT_SanPham() {
+    public TT_SanPham(String maSP) {
         initComponents();
+        //Phuong
+        SanPhamDao sp = new SanPhamDao();
+        txtTenSP.setText(sp.getTenSP(maSP));
+        txtMaSP.setText(maSP);
+        txtDVT.setText(sp.getDVT(maSP));
+        txtNSX.setText(sp.getNuocsx(maSP));
+        txtDonGia.setText(sp.getDonGia(maSP));
     }
 
     /**
@@ -41,6 +51,14 @@ public class TT_SanPham extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        txtTenSP = new javax.swing.JTextField();
+        txtMaSP = new javax.swing.JTextField();
+        txtDVT = new javax.swing.JTextField();
+        txtNSX = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        txtDonGia = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,6 +87,17 @@ public class TT_SanPham extends javax.swing.JFrame {
         jLabel6.setText("ĐƠN GIÁ");
 
         jFormattedTextField1.setText("jFormattedTextField1");
+        txtDVT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDVTActionPerformed(evt);
+            }
+        });
+
+        txtNSX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNSXActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -134,6 +163,11 @@ public class TT_SanPham extends javax.swing.JFrame {
                             .addComponent(jTextField3)
                             .addComponent(jTextField4)
                             .addComponent(jFormattedTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
+                            .addComponent(txtTenSP)
+                            .addComponent(txtMaSP)
+                            .addComponent(txtDonGia, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(txtNSX)
+                            .addComponent(txtDVT)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,6 +176,8 @@ public class TT_SanPham extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,6 +239,76 @@ public class TT_SanPham extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+    //Phuong
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        //Kiem tra ma sp
+        StringBuilder sb = new StringBuilder();
+        if(txtMaSP.getText().equals("")){
+            sb.append("Ma san pham khong duoc de trong");
+            txtMaSP.setBackground(Color.red);
+        }else{
+            txtMaSP.setBackground(Color.white);
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(this, sb);
+            return;
+        }
+        
+        try{
+            SanPham sp=new SanPham();
+            sp.setMaSP(txtMaSP.getText());
+            sp.setTenSP(txtTenSP.getText());
+            sp.setDvt(txtDVT.getText());
+            sp.setNuocSX(txtNSX.getText());
+            sp.setDonGia(Float.parseFloat(txtDonGia.getText()));
+            
+            SanPhamDao dao= new SanPhamDao();
+            dao.update(sp);
+            
+            JOptionPane.showMessageDialog(this, "Thong tin san pham da duoc sua doi va luu vao CSDL");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error" +e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
+    //Phuong
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMaSP.getText().equals("")){
+            sb.append("Ma san pham khong duoc de trong");
+            txtMaSP.setBackground(Color.red);
+        }else{
+            txtMaSP.setBackground(Color.white);
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(this, sb);
+            return;
+        }
+        
+        try{
+            SanPham sp=new SanPham();
+            sp.setMaSP(txtMaSP.getText());
+            
+            SanPhamDao dao= new SanPhamDao();
+            dao.delete(sp);
+            
+            JOptionPane.showMessageDialog(this, "San pham da duoc xoa thanh cong");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error" +e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void txtNSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNSXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNSXActionPerformed
+
+    private void txtDVTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDVTActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtDVTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,8 +339,10 @@ public class TT_SanPham extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            private String masp;
+            @Override
             public void run() {
-                new TT_SanPham().setVisible(true);
+                new TT_SanPham(masp).setVisible(true);
             }
         });
     }
@@ -255,5 +363,10 @@ public class TT_SanPham extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtDVT;
+    private javax.swing.JTextField txtDonGia;
+    private javax.swing.JTextField txtMaSP;
+    private javax.swing.JTextField txtNSX;
+    private javax.swing.JTextField txtTenSP;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -10,3 +11,43 @@
         </group>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/TT_KhuyenMai.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/Resources/Khách%20hàng.png</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/HoaDon.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/TT_KhuyenMai_btnThem.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/TaoHoaDon.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/Process/KhachHangDao.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/Process/KhachHang.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/BaoCaoThongKeDoanhThu.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/DoanhThu.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/QL_Kho.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/DS_XuatKho.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/Process/SanPham.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/Menu_NVHT.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/Menu_QLCH.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/TT_SanPham.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/Menu_NVCH.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/ConnectDB/ConnectionOracle.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/ThongKe_Kho.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/TT_NhanVien.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/TT_KhachHang_btnThem.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/Process/SanPhamDao.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/DangNhap.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/QL_KhachHang.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/QL_NhanVien.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/QL_SanPham.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/TT_KhachHang.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/ConnectDB/ConnectionUtils.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/QL_KhuyenMai.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/DS_NhapKho.java</file>
+            <file>file:/D:/UIT/Java/Git/java_IS216.M21_14/Quan%20Ly%20Xe%20Dap/src/View/TT_SanPham_btnThem.java</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> DoAn_Java
