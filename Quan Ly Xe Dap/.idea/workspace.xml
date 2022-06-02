@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6452c627-2c40-43b9-a903-4424540a46f5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/BaoCaoThongKeDoanhThu.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BaoCaoThongKeDoanhThu.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/BaoCaoThongKeDoanhThu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BaoCaoThongKeDoanhThu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DS_NhapKho.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DS_NhapKho.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DS_NhapKho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DS_NhapKho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DS_XuatKho.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DS_XuatKho.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DS_XuatKho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DS_XuatKho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DangNhap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DangNhap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DoanhThu.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DoanhThu.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DoanhThu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DoanhThu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/HoaDon.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HoaDon.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/HoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HoaDon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Menu_NVCH.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Menu_NVCH.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Menu_NVCH.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Menu_NVCH.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Menu_NVHT.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Menu_NVHT.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Menu_NVHT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Menu_NVHT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Menu_QLCH.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Menu_QLCH.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Menu_QLCH.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Menu_QLCH.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/QL_KhachHang.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QL_KhachHang.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/QL_KhachHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QL_KhachHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/QL_Kho.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QL_Kho.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/QL_Kho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QL_Kho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/QL_SanPham.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QL_SanPham.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/QL_SanPham.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QL_SanPham.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TT_SanPham_btnThem.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TT_SanPham_btnThem.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TT_SanPham_btnThem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TT_SanPham_btnThem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TaoHoaDon.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TaoHoaDon.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TaoHoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TaoHoaDon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/ThongKe_Kho.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ThongKe_Kho.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/ThongKe_Kho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ThongKe_Kho.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2A0DqSWv0jHMkLC4qhpJsntqVCo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="flattenPackages" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="project.propGUI" />
+  </component>
+  <component name="RunManager" selected="Application.QL_SanPham">
+    <configuration name="QL_SanPham" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.QL_SanPham" />
+      <module name="Quan Ly Xe Dap" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TT_NhanVien_btnThem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.TT_NhanVien_btnThem" />
+      <module name="Quan Ly Xe Dap" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="View.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.QL_SanPham" />
+        <item itemvalue="Application.TT_NhanVien_btnThem" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6452c627-2c40-43b9-a903-4424540a46f5" name="Changes" comment="" />
+      <created>1654137820089</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654137820089</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
