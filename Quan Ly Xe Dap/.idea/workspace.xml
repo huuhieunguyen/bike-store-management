@@ -2,36 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6452c627-2c40-43b9-a903-4424540a46f5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Process/KhachHangDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Process/SanPhamDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/BaoCaoThongKeDoanhThu.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BaoCaoThongKeDoanhThu.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/BaoCaoThongKeDoanhThu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BaoCaoThongKeDoanhThu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DS_NhapKho.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DS_NhapKho.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DS_NhapKho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DS_NhapKho.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DS_XuatKho.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DS_XuatKho.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DS_XuatKho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DS_XuatKho.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DangNhap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DangNhap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DoanhThu.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DoanhThu.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/DoanhThu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DoanhThu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/HoaDon.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HoaDon.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/HoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HoaDon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Process/KhachHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Process/KhachHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Process/SanPham.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Process/SanPham.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Menu_NVCH.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Menu_NVCH.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Menu_NVCH.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Menu_NVCH.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Menu_NVHT.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Menu_NVHT.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Menu_NVHT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Menu_NVHT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Menu_QLCH.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Menu_QLCH.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Menu_QLCH.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Menu_QLCH.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/QL_KhachHang.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QL_KhachHang.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/QL_KhachHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QL_KhachHang.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/QL_Kho.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QL_Kho.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/QL_Kho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QL_Kho.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/QL_SanPham.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QL_SanPham.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/QL_SanPham.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/QL_SanPham.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TT_KhachHang.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TT_KhachHang.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TT_KhachHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TT_KhachHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TT_KhachHang_btnThem.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TT_KhachHang_btnThem.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TT_KhachHang_btnThem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TT_KhachHang_btnThem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TT_SanPham.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TT_SanPham.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TT_SanPham.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TT_SanPham.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/TT_SanPham_btnThem.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TT_SanPham_btnThem.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/TT_SanPham_btnThem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TT_SanPham_btnThem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/TaoHoaDon.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TaoHoaDon.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/TaoHoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TaoHoaDon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/ThongKe_Kho.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ThongKe_Kho.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/ThongKe_Kho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ThongKe_Kho.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +28,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

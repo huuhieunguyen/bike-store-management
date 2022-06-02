@@ -210,8 +210,8 @@ public class TT_SanPham_btnThem extends javax.swing.JFrame {
         mhQLSP.setVisible(true);
     }//GEN-LAST:event_btnQuayLaiActionPerformed
     //Thanh Hieu
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        
+                                          
+
 =======
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
