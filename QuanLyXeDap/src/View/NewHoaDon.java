@@ -2,12 +2,15 @@
 package View;
 
 import ConnectDB.ConnectionUtils;
+import Process.SanPham;
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -37,6 +40,11 @@ public class NewHoaDon extends javax.swing.JFrame {
         tblModel_SearchSP.setRowCount(0);
         tblModel_CTHD.setRowCount(0);
         
+        showComBoBoxData();
+        
+        // Khoi tao bang CTHD_ThanhToan
+        initTable_CTHD_ThanhToan();
+        
         // Khoi tao bang SanPham
         initTable_SP();
         
@@ -48,12 +56,31 @@ public class NewHoaDon extends javax.swing.JFrame {
         
     }
     
+    // Load du lieu (items) tu List SanPham trong package Process vao combobox
+    private void showComBoBoxData(){
+        List<String> data = SanPham.getDataSP();
+        for (String str : data) {
+            cbxLoaiThongTin_SP.addItem(str);
+        }
+    }
+    
     // Khoi tao bang SanPham
     private void initTable_SP(){
         String tieuDe[] = {"MÃ SP", "TÊN SP", "DVT", "NƯỚC SX", "GIÁ"};
         tblModel_SearchSP.setColumnIdentifiers(tieuDe);
     }
     
+    // Khoi tao bang CTHD_ThanhToan
+    private void initTable_CTHD_ThanhToan(){
+        String tieuDe[] = {"MÃ SP", "TÊN SP", "SỐ LƯỢNG", "THÀNH TIỀN"};
+        tblModel_CTHD.setColumnIdentifiers(tieuDe);
+        
+        //Set tieu de
+        JTableHeader THeader = tblCTHD_TT.getTableHeader();
+        THeader.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        ((DefaultTableCellRenderer) THeader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+//        tblCTHD_TT.setModel(tblModel_CTHD);
+    }
     // Load du lieu tu table SanPham trong csdl len jTable
     private void loadSanPham(){
         try(Connection con = ConnectionUtils.getMyConnection()){
@@ -146,6 +173,11 @@ public class NewHoaDon extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtTuKhoa_SP = new javax.swing.JTextField();
+        cbxLoaiThongTin_SP = new javax.swing.JComboBox<>();
+        btnSearch_LoaiTT_SP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -253,6 +285,27 @@ public class NewHoaDon extends javax.swing.JFrame {
         jButton4.setForeground(new java.awt.Color(0, 102, 255));
         jButton4.setText("THANH TOÁN");
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("LOẠI THÔNG TIN");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("TỪ KHÓA");
+
+        cbxLoaiThongTin_SP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxLoaiThongTin_SPActionPerformed(evt);
+            }
+        });
+
+        btnSearch_LoaiTT_SP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search.png"))); // NOI18N
+        btnSearch_LoaiTT_SP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearch_LoaiTT_SPActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -307,6 +360,18 @@ public class NewHoaDon extends javax.swing.JFrame {
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6))))
                         .addContainerGap(12, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtTuKhoa_SP)
+                    .addComponent(cbxLoaiThongTin_SP, 0, 123, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnSearch_LoaiTT_SP)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,7 +397,16 @@ public class NewHoaDon extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(cbxLoaiThongTin_SP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txtTuKhoa_SP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSearch_LoaiTT_SP))
+                        .addGap(14, 14, 14)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
@@ -356,7 +430,7 @@ public class NewHoaDon extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 5, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,6 +454,61 @@ public class NewHoaDon extends javax.swing.JFrame {
         tableModelNhan = (DefaultTableModel) tblCTHD_TT.getModel();
         tableModelNhan.addRow(new Object[]{masp,tensp,gia});
     }//GEN-LAST:event_tblSearchSPMouseClicked
+
+    private void cbxLoaiThongTin_SPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLoaiThongTin_SPActionPerformed
+        // TODO add your handling code here:
+        int index = cbxLoaiThongTin_SP.getSelectedIndex();
+        if(index > 0){
+            String selectedValue = SanPham.getDataSP().get(index);
+            System.out.println("Lay gia tri thong qua chi so cua List SanPham trong cbb: "
+            + selectedValue);
+        }
+    }//GEN-LAST:event_cbxLoaiThongTin_SPActionPerformed
+
+    private void btnSearch_LoaiTT_SPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch_LoaiTT_SPActionPerformed
+        // TODO add your handling code here:
+        try(Connection con = ConnectionUtils.getMyConnection()){
+            String sql = null;
+            switch (cbxLoaiThongTin_SP.getSelectedIndex()) {
+                case 0:
+                    sql = "select * from SANPHAM WHERE UPPER(MASP) like '%";
+                    break;
+                case 1:
+                    sql = "select * from SANPHAM WHERE UPPER(TENSP) like '%";
+                    break;
+                case 2:
+                    sql = "select * from SANPHAM WHERE UPPER(NUOCSX) like '%";
+                    break;
+                default:
+                    break;
+            }
+            
+            sql +=txtTuKhoa_SP.getText().toUpperCase()+"%'";
+            System.out.print(sql);
+            Statement stat = con.createStatement();
+
+            ResultSet rs = stat.executeQuery(sql);
+            
+            tblModel_SearchSP.setRowCount(0);
+            while(rs.next()){
+                tblModel_SearchSP.addRow(new Object[] {
+                    rs.getString("MASP"),
+                    rs.getString("TENSP"),
+                    rs.getString("DVT"),
+                    rs.getString("NUOCSX"),
+                    en.format(rs.getLong("DONGIA"))
+                });
+            }
+            tblModel_SearchSP.fireTableDataChanged();
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+        tblSearchSP.setModel(tblModel_SearchSP);
+        setVisible(true);
+        
+    }//GEN-LAST:event_btnSearch_LoaiTT_SPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -417,6 +546,8 @@ public class NewHoaDon extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSearch_LoaiTT_SP;
+    private javax.swing.JComboBox<String> cbxLoaiThongTin_SP;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -430,6 +561,8 @@ public class NewHoaDon extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -439,5 +572,6 @@ public class NewHoaDon extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tblCTHD_TT;
     private javax.swing.JTable tblSearchSP;
+    private javax.swing.JTextField txtTuKhoa_SP;
     // End of variables declaration//GEN-END:variables
 }
