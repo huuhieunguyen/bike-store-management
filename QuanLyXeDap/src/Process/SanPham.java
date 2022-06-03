@@ -1,11 +1,8 @@
 
 package Process;
 
-import ConnectDB.ConnectionUtils;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.sql. *;
 
 /**
  *
@@ -16,6 +13,7 @@ public class SanPham {
     private static List<String> SanPham = new ArrayList<>();
     // Them cac thuoc tinh (phan tu) vao List Khach Hang
     public static List<String> getDataSP(){
+        SanPham = new ArrayList<>();
         SanPham.add("MÃ SP");
         SanPham.add("TÊN SP");
 //        SanPham.add("DVT");

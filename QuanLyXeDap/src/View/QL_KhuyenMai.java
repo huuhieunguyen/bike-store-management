@@ -1,20 +1,120 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package View;
+import ConnectDB.ConnectionUtils;
+import Process.KhuyenMai;
+import java.awt.Font;
+import java.sql.* ;
+import java.text.NumberFormat;
+import java.util.List;
+import java.util.Locale;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+
 
 /**
  *
- * @author User
+ * @author Huu Hieu
  */
 public class QL_KhuyenMai extends javax.swing.JFrame {
+    
+    private String makm;
+    
+    DefaultTableModel tblModel;
+    Locale locale = new Locale("en", "EN");
+    NumberFormat en = NumberFormat.getInstance(locale);
 
     /**
      * Creates new form QL_NhanVien
      */
     public QL_KhuyenMai() {
         initComponents();
+        
+        //Load du lieu (items) tu List KhuyenMai trong Package Process vao combobox
+        showComBoBoxData();
+        
+        // Khoi tao bang KhuyenMai
+        initTable_HD();
+        
+        // Load du lieu tu table KhuyenMai trong csdl len jTable
+        loadHoaDon();
+        
+        // Dieu chinh do rong cot trong bang KhuyenMai
+        HeaderAdjust();
+    }
+    
+    // Load du lieu (items) tu List KhuyenMai trong Package Process vao combobox
+    private void showComBoBoxData(){
+        List<String> data = KhuyenMai.getDataKM();
+        for (String str : data) {
+            cbxLoaiTT_KM.addItem(str);
+        }
+    }
+    
+    // Khoi tao bang KhuyenMai
+    private void initTable_HD(){
+        tblModel = new DefaultTableModel();
+        String tieuDe[] = {"MÃ KM", "NỘI DUNG", "ĐỊNH MỨC", "PHẦN TRĂM"};
+        tblModel.setColumnIdentifiers(tieuDe);
+    }
+    
+    // Load du lieu tu table KhuyenMai trong csdl len jTable
+    private void loadHoaDon(){
+        try(Connection con = ConnectionUtils.getMyConnection()){
+           String queryHD = "select * from KHUYENMAI";
+           PreparedStatement ps = con.prepareStatement(queryHD);
+           ResultSet rs = ps.executeQuery();
+           
+           tblModel.setRowCount(0); // Xoa toan bo dong du lieu trong table
+           
+           while(rs.next()){
+               String[] row = new String[]{
+                 rs.getString("MAKM"),
+                 rs.getString("NOIDUNG"),
+                 en.format(rs.getLong("DINHMUC")), 
+                 en.format(rs.getFloat("PHANTRAM"))
+               };
+               tblModel.addRow(row);
+           }
+           
+           // Cap nhat du lieu duoc hien thi trong table
+           tblModel.fireTableDataChanged();
+           
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+        
+        // Gan tblModel vao jTable tblKhuyenMai
+        tblKhuyenMai.setModel(tblModel);
+        setVisible(true);
+        tblKhuyenMai.setDefaultEditor(Object.class, null);
+    }
+    
+    // Dieu chinh do rong cot trong bang
+    public void HeaderAdjust() {
+        //Set do rong cua bang
+        tblKhuyenMai.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+
+        tblKhuyenMai.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jScrollPane1.setViewportView(tblKhuyenMai);
+
+        if (tblKhuyenMai.getColumnModel().getColumnCount() > 0) {
+            tblKhuyenMai.getColumnModel().getColumn(0).setMinWidth(80);
+            tblKhuyenMai.getColumnModel().getColumn(0).setMaxWidth(80);
+            tblKhuyenMai.getColumnModel().getColumn(1).setMinWidth(300);
+            tblKhuyenMai.getColumnModel().getColumn(1).setMaxWidth(3000);
+            tblKhuyenMai.getColumnModel().getColumn(2).setMinWidth(80);
+            tblKhuyenMai.getColumnModel().getColumn(2).setMaxWidth(80);
+        }
+ 
+        //Set tieu de
+        JTableHeader THeader = tblKhuyenMai.getTableHeader();
+        THeader.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        ((DefaultTableCellRenderer) THeader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
     }
 
     /**
@@ -30,16 +130,18 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtTuKhoa_KM = new javax.swing.JTextField();
+        cbxLoaiTT_KM = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        tblKhuyenMai = new javax.swing.JTable();
+        btnChon = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnQuayLai = new javax.swing.JButton();
+        btnSearchKM = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 153));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -53,9 +155,13 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("LOẠI THÔNG TIN");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxLoaiTT_KM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxLoaiTT_KMActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblKhuyenMai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -66,44 +172,54 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblKhuyenMaiMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblKhuyenMai);
 
-        jButton2.setBackground(new java.awt.Color(153, 153, 153));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 255, 204));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Selection.png"))); // NOI18N
-        jButton2.setText("CHỌN");
-
-        jButton3.setBackground(new java.awt.Color(204, 255, 153));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 153, 0));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Add.png"))); // NOI18N
-        jButton3.setText("THÊM");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnChon.setBackground(new java.awt.Color(153, 153, 153));
+        btnChon.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnChon.setForeground(new java.awt.Color(204, 255, 204));
+        btnChon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Selection.png"))); // NOI18N
+        btnChon.setText("CHỌN");
+        btnChon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnChonActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 51, 51));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Backward (black).png"))); // NOI18N
-        jButton1.setText("QUAY LẠI ");
-        jButton1.setMaximumSize(new java.awt.Dimension(131, 38));
-        jButton1.setMinimumSize(new java.awt.Dimension(131, 38));
-        jButton1.setPreferredSize(new java.awt.Dimension(131, 38));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setBackground(new java.awt.Color(204, 255, 153));
+        btnThem.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnThem.setForeground(new java.awt.Color(0, 153, 0));
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Add.png"))); // NOI18N
+        btnThem.setText("THÊM");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search.png"))); // NOI18N
-        jButton4.setBorder(null);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnQuayLai.setBackground(new java.awt.Color(204, 204, 204));
+        btnQuayLai.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnQuayLai.setForeground(new java.awt.Color(51, 51, 51));
+        btnQuayLai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Backward (black).png"))); // NOI18N
+        btnQuayLai.setText("QUAY LẠI ");
+        btnQuayLai.setMaximumSize(new java.awt.Dimension(131, 38));
+        btnQuayLai.setMinimumSize(new java.awt.Dimension(131, 38));
+        btnQuayLai.setPreferredSize(new java.awt.Dimension(131, 38));
+        btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnQuayLaiActionPerformed(evt);
+            }
+        });
+
+        btnSearchKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search.png"))); // NOI18N
+        btnSearchKM.setBorder(null);
+        btnSearchKM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchKMActionPerformed(evt);
             }
         });
 
@@ -113,29 +229,29 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(245, 245, 245)
+                .addGap(205, 205, 205)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2)
-                    .addComponent(jComboBox1, 0, 168, Short.MAX_VALUE))
+                    .addComponent(txtTuKhoa_KM)
+                    .addComponent(cbxLoaiTT_KM, 0, 168, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSearchKM, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnChon)
                 .addGap(29, 29, 29)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addContainerGap(67, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,23 +261,23 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxLoaiTT_KM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(53, 53, 53)
+                            .addComponent(txtTuKhoa_KM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnChon, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSearchKM, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -169,9 +285,7 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,18 +297,82 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    /**
+    * @author Tran Thanh Hieu
+    */
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        View.TT_KhuyenMai_btnThem mhThemKM = new View.TT_KhuyenMai_btnThem();
+        this.setVisible(false);
+        mhThemKM.setVisible(true);
+    }//GEN-LAST:event_btnThemActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnQuayLaiActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnSearchKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchKMActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        try ( java.sql.Connection con = ConnectionUtils.getMyConnection()) {
+            String sql = null;
+            switch (cbxLoaiTT_KM.getSelectedIndex()) {
+                case 0:
+                    sql = "select * from KHUYENMAI WHERE UPPER(MAKM) like '%";
+                    break;
+                case 1:
+                    sql = "select * from KHUYENMAI WHERE UPPER(NOIDUNG) like '%";
+                    break;
+                default:
+                    break;
+            }
+            sql +=txtTuKhoa_KM.getText().toUpperCase()+"%'";
+            System.out.print(sql);
+            Statement stat = con.createStatement();
 
+            ResultSet rs = stat.executeQuery(sql);
+            tblModel.setRowCount(0);
+            while (rs.next()) {
+                tblModel.addRow(new Object[]{
+                    rs.getString("MASP"),
+                    rs.getString("TENSP"),
+                    rs.getString("DVT"),
+                     rs.getString("NUOCSX"),
+                    rs.getString("DONGIA"),
+                    rs.getString("TONGSL"),});
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+        tblKhuyenMai.setModel(tblModel);
+        setVisible(true);
+    }//GEN-LAST:event_btnSearchKMActionPerformed
+
+    private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
+        // TODO add your handling code here:
+         if(makm != null) {
+            View.TT_KhuyenMai km = new TT_KhuyenMai(makm);
+            this.setVisible(false);
+            km.setVisible(true);
+        }
+    }//GEN-LAST:event_btnChonActionPerformed
+
+    private void cbxLoaiTT_KMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLoaiTT_KMActionPerformed
+        // TODO add your handling code here:
+        int index = cbxLoaiTT_KM.getSelectedIndex();
+        if(index > 0){
+            String selectedValue = KhuyenMai.getDataKM().get(index);
+            System.out.println("Lay gia tri thong qua chi so cua List KhuyenMai trong cbb: "
+            + selectedValue);
+        }
+    }//GEN-LAST:event_cbxLoaiTT_KMActionPerformed
+
+    private void tblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseClicked
+        // TODO add your handling code here:
+        //masp = tblKhuyenMai.getValueAt(tblKhuyenMai.getSelectedRow(), 0) + "";        
+    }//GEN-LAST:event_tblKhuyenMaiMouseClicked
+       
     /**
      * @param args the command line arguments
      */
@@ -232,17 +410,17 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnChon;
+    private javax.swing.JButton btnQuayLai;
+    private javax.swing.JButton btnSearchKM;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JComboBox<String> cbxLoaiTT_KM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable tblKhuyenMai;
+    private javax.swing.JTextField txtTuKhoa_KM;
     // End of variables declaration//GEN-END:variables
 }

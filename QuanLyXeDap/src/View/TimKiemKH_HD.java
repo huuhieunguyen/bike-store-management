@@ -1,8 +1,7 @@
-
 package View;
 
 import javax.swing.JOptionPane;
-import java.sql.* ;
+import java.sql.*;
 import ConnectDB.ConnectionUtils;
 import Process.KhachHang;
 import java.awt.Font;
@@ -17,36 +16,48 @@ import javax.swing.table.JTableHeader;
  * @author Nguyen Huu Hieu
  */
 public class TimKiemKH_HD extends javax.swing.JFrame {
-        private String maKH;
+
+    private String maKH;
+    private String manv;
     DefaultTableModel tblModel;
-    
+
     public TimKiemKH_HD() {
         initComponents();
         showComBoBoxData();
         initTable();
-        
-        
+
         loadKhachHang();
-        
+
         HeaderAdjust();
     }
-    
+
+    public TimKiemKH_HD(String ma_nv) {
+        initComponents();
+        showComBoBoxData();
+        initTable();
+
+        loadKhachHang();
+
+        HeaderAdjust();
+        manv = ma_nv;
+    }
+
     // Load du lieu (items) tu List Khach Hang trong package Process vao combobox
-    private void showComBoBoxData(){
+    private void showComBoBoxData() {
         List<String> data = KhachHang.getDataKH();
         for (String str : data) {
             cbxLoaiThongTin.addItem(str);
         }
     }
-    
+
     // Khoi tao bang KhachHang
-    private void initTable(){
+    private void initTable() {
         tblModel = new DefaultTableModel();
-        String tieuDe[] = {"MAKH", "HỌ TÊN", "NGÀY SINH", "GIỚI TÍNH", 
-                                                              "ĐỊA CHỈ", "SĐT"};
+        String tieuDe[] = {"MAKH", "HỌ TÊN", "NGÀY SINH", "GIỚI TÍNH",
+            "ĐỊA CHỈ", "SĐT"};
         tblModel.setColumnIdentifiers(tieuDe);
     }
-    
+
     // Dieu chinh do rong cot trong bang
     public void HeaderAdjust() {
         //Set do rong cua bang
@@ -73,42 +84,42 @@ public class TimKiemKH_HD extends javax.swing.JFrame {
         THeader.setFont(new Font("Segoe UI", Font.BOLD, 12));
         ((DefaultTableCellRenderer) THeader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
     }
-    
+
     // Load du lieu tu table KhachHang trong csdl len jTable
-    private void loadKhachHang(){
-        try(Connection con = ConnectionUtils.getMyConnection()){
-           String queryKH = "select * from KHACHHANG";
-           PreparedStatement ps = con.prepareStatement(queryKH);
-           ResultSet rs = ps.executeQuery();
-           
-           // Xoa toan bo dong du lieu trong table
-           tblModel.setRowCount(0);
-           while(rs.next()){
-               String[] row = new String[]{
-                 rs.getString("MAKH"),
-                 rs.getString("HOTEN"),
-                 rs.getString("NGSINH"),
-                 rs.getString("GIOITINH"),
-                 rs.getString("DIACHI"),
-                 rs.getString("SDT")
-               };
-               tblModel.addRow(row);
-           }
-           
-           // Cap nhat du lieu duoc hien thi trong table
-           tblModel.fireTableDataChanged();
-           
-        }catch (Exception e){
+    private void loadKhachHang() {
+        try ( Connection con = ConnectionUtils.getMyConnection()) {
+            String queryKH = "select * from KHACHHANG";
+            PreparedStatement ps = con.prepareStatement(queryKH);
+            ResultSet rs = ps.executeQuery();
+
+            // Xoa toan bo dong du lieu trong table
+            tblModel.setRowCount(0);
+            while (rs.next()) {
+                String[] row = new String[]{
+                    rs.getString("MAKH"),
+                    rs.getString("HOTEN"),
+                    rs.getString("NGSINH"),
+                    rs.getString("GIOITINH"),
+                    rs.getString("DIACHI"),
+                    rs.getString("SDT")
+                };
+                tblModel.addRow(row);
+            }
+
+            // Cap nhat du lieu duoc hien thi trong table
+            tblModel.fireTableDataChanged();
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
             e.printStackTrace();
         }
-        
+
         // Gan tblModel vao jTable tblKhachHang
         tblKhachHang.setModel(tblModel);
         setVisible(true);
     }
-    
-    public String getMaKH(){
+
+    public String getMaKH() {
         return this.maKH;
     }
 
@@ -135,6 +146,9 @@ public class TimKiemKH_HD extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+
+        jLabel1.setBackground(new java.awt.Color(204, 255, 204));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("DANH SÁCH KHÁCH HÀNG");
@@ -284,36 +298,35 @@ public class TimKiemKH_HD extends javax.swing.JFrame {
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
         // TODO add your handling code here:
-        try(Connection con = ConnectionUtils.getMyConnection()){
+        try ( Connection con = ConnectionUtils.getMyConnection()) {
             String sql = "select * from KHACHHANG WHERE MAKH like ?"
                     + "or HOTEN like ? or SDT like ?";
-            
+
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             String dkTimKiem = "%";
 //            if(txtTuKhoa.getText().equals("")){
-                dkTimKiem += txtTuKhoa.getText() + "%";
+            dkTimKiem += txtTuKhoa.getText() + "%";
 //            }
-            
-            for(int i=1; i<=3; i++){
+
+            for (int i = 1; i <= 3; i++) {
                 ps.setString(i, dkTimKiem);
             }
-            
+
             ResultSet rs = ps.executeQuery();
             tblModel.setRowCount(0);
-            while(rs.next()){
-                tblModel.addRow(new Object[] {
+            while (rs.next()) {
+                tblModel.addRow(new Object[]{
                     rs.getString("MAKH"),
                     rs.getString("HOTEN"),
                     rs.getString("NGSINH"),
                     rs.getString("GIOITINH"),
                     rs.getString("DIACHI"),
-                    rs.getString("SDT"),
-                });
+                    rs.getString("SDT"),});
             }
             tblModel.fireTableDataChanged();
-            
-        }catch (Exception e){
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
             e.printStackTrace();
         }
@@ -324,10 +337,10 @@ public class TimKiemKH_HD extends javax.swing.JFrame {
     private void cbxLoaiThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLoaiThongTinActionPerformed
         // TODO add your handling code here:
         int index = cbxLoaiThongTin.getSelectedIndex();
-        if(index > 0){
+        if (index > 0) {
             String selectedValue = KhachHang.getDataKH().get(index);
             System.out.println("Lay gia tri thong qua chi so cua List KhachHang trong cbb: "
-            + selectedValue);
+                    + selectedValue);
         }
     }//GEN-LAST:event_cbxLoaiThongTinActionPerformed
 
@@ -338,51 +351,51 @@ public class TimKiemKH_HD extends javax.swing.JFrame {
 
     private void btnChonKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonKHActionPerformed
 //        // TODO add your handling code here:
-//        if(maKH != null) {
-//            TaoHoaDon taoHD = new TaoHoaDon(maKH);
+        if (maKH != null) {
+            NewHoaDon hd = new NewHoaDon(manv, maKH);
 
-            
             this.setVisible(false);
-//        }
+            hd.setVisible(true);
+        }
     }//GEN-LAST:event_btnChonKHActionPerformed
 
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(TimKiemKH_HD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(TimKiemKH_HD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(TimKiemKH_HD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(TimKiemKH_HD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new TimKiemKH_HD().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(TimKiemKH_HD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TimKiemKH_HD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TimKiemKH_HD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TimKiemKH_HD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TimKiemKH_HD().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChonKH;

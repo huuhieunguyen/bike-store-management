@@ -19,6 +19,8 @@ import javax.swing.table.JTableHeader;
  * @author Nguyen Huu Hieu
  */
 public class HoaDon extends javax.swing.JFrame {
+    private String manv;
+    
     DefaultTableModel tblModel;
     Locale locale = new Locale("en", "EN");
     NumberFormat en = NumberFormat.getInstance(locale);
@@ -28,6 +30,29 @@ public class HoaDon extends javax.swing.JFrame {
      */
     public HoaDon() {
         initComponents();
+        
+        //Load du lieu (items) tu List Hoa_Don trong Package Process vao combobox
+        showComBoBoxData();
+        
+        // Khoi tao bang Hoa Don
+        initTable_HD();
+        
+        // Load du lieu tu table HoaDon trong csdl len jTable
+        loadHoaDon();
+        
+        // Dieu chinh do rong cot trong bang HD
+        HeaderAdjust();
+        
+        // Load MaHD len combobox de tra cuu CTHD
+        initComboBox_HD();
+    }
+    
+    public HoaDon(String ma_nv){
+        
+//        System.out.println(manv);
+        initComponents();
+        manv = ma_nv;
+
         
         //Load du lieu (items) tu List Hoa_Don trong Package Process vao combobox
         showComBoBoxData();
@@ -154,7 +179,7 @@ public class HoaDon extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHoaDon = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnTaoHD = new javax.swing.JButton();
         btnTraCuu = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -182,14 +207,14 @@ public class HoaDon extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblHoaDon);
 
-        jButton1.setBackground(new java.awt.Color(153, 255, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 51, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Add.png"))); // NOI18N
-        jButton1.setText("TẠO HÓA ĐƠN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnTaoHD.setBackground(new java.awt.Color(153, 255, 204));
+        btnTaoHD.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnTaoHD.setForeground(new java.awt.Color(51, 51, 0));
+        btnTaoHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Add.png"))); // NOI18N
+        btnTaoHD.setText("TẠO HÓA ĐƠN");
+        btnTaoHD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnTaoHDActionPerformed(evt);
             }
         });
 
@@ -232,6 +257,12 @@ public class HoaDon extends javax.swing.JFrame {
             }
         });
 
+        cbxHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxHoaDonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelHoaDonLayout = new javax.swing.GroupLayout(PanelHoaDon);
         PanelHoaDon.setLayout(PanelHoaDonLayout);
         PanelHoaDonLayout.setHorizontalGroup(
@@ -259,7 +290,7 @@ public class HoaDon extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnTraCuu)
                 .addGap(81, 81, 81)
-                .addComponent(jButton1)
+                .addComponent(btnTaoHD)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelHoaDonLayout.setVerticalGroup(
@@ -282,7 +313,7 @@ public class HoaDon extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(PanelHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnTaoHD)
                     .addComponent(btnTraCuu)
                     .addComponent(cbxHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
@@ -306,9 +337,12 @@ public class HoaDon extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnTaoHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        NewHoaDon hd = new NewHoaDon(manv);
+        this.setVisible(false);
+        hd.setVisible(true);
+    }//GEN-LAST:event_btnTaoHDActionPerformed
 
     private void btnTraCuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraCuuActionPerformed
         // TODO add your handling code here:
@@ -387,6 +421,10 @@ public class HoaDon extends javax.swing.JFrame {
         setVisible(true);
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
+    private void cbxHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxHoaDonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxHoaDonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -424,11 +462,11 @@ public class HoaDon extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelHoaDon;
+    private javax.swing.JButton btnTaoHD;
     private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnTraCuu;
     private javax.swing.JComboBox<String> cbxHoaDon;
     private javax.swing.JComboBox<String> cbxLoaiThongTin;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

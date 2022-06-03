@@ -1,7 +1,8 @@
-
 package View;
+
 import Process.TaiKhoan;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Doan Tu Quynh
@@ -13,6 +14,7 @@ public class DangNhap extends javax.swing.JFrame {
      */
     public DangNhap() {
         initComponents();
+        this.setTitle("ĐĂNG NHẬP");
     }
 
     /**
@@ -82,6 +84,9 @@ public class DangNhap extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtUserNameFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUserNameFocusLost(evt);
+            }
         });
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +125,7 @@ public class DangNhap extends javax.swing.JFrame {
         btnOK.setForeground(new java.awt.Color(102, 102, 102));
         btnOK.setText("OK");
         btnOK.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnOK.setFocusPainted(false);
         btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOKActionPerformed(evt);
@@ -229,58 +235,60 @@ public class DangNhap extends javax.swing.JFrame {
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
-/**
- * 
- * @param DOAN TU QUYNH
- */
+    /**
+     *
+     * @param DOAN TU QUYNH
+     */
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         // TODO add your handling code here:
         String username = txtUserName.getText();
         String password = new String(txtPassword.getPassword());
-        
-            StringBuilder sb = new StringBuilder();
-            if(username.equals(""))
-                sb.append("Username is empty \n");
-            
-            if(password.equals(""))
-                sb.append("Password is empty \n");
-            if(sb.length()>0){
-                JOptionPane.showMessageDialog(this, sb.toString(), "THÔNG BÁO",
+
+        StringBuilder sb = new StringBuilder();
+        if (username.equals("")) {
+            sb.append("Username is empty \n");
+        }
+
+        if (password.equals("")) {
+            sb.append("Password is empty \n");
+        }
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(this, sb.toString(), "THÔNG BÁO",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        TaiKhoan tk = new TaiKhoan();
+        int i = tk.ktDangNhap(username, password);
+        String manv = tk.getManv(username, password);
+        switch (i) {
+            case 0:
+                Menu_QLCH menuQLCH = new Menu_QLCH(manv);
+                this.setVisible(false);
+                JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "THÔNG BÁO",
+                        JOptionPane.OK_OPTION);
+                menuQLCH.setVisible(true);
+                break;
+            case 1:
+                Menu_NVCH menuNVCH = new Menu_NVCH(manv);
+                this.setVisible(false);
+                JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "THÔNG BÁO",
+                        JOptionPane.OK_OPTION);
+                menuNVCH.setVisible(true);
+                break;
+            case 2:
+                Menu_NVHT menuNVHT = new Menu_NVHT(manv);
+                this.setVisible(false);
+                JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "THÔNG BÁO",
+                        JOptionPane.OK_OPTION);
+                menuNVHT.setVisible(true);
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Tên đăng nhập và mật khẩu không hợp lệ", "THÔNG BÁO",
                         JOptionPane.ERROR_MESSAGE);
-                return; 
-            }
-            
-            TaiKhoan tk = new TaiKhoan();
-            int i = tk.ktDangNhap(username, password);
-            String manv = tk.getManv(username, password);
-            switch(i){
-                case 0:
-                    Menu_QLCH menuQLCH = new Menu_QLCH(manv);
-                    this.setVisible(false);
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "THÔNG BÁO",
-                        JOptionPane.OK_OPTION);
-                    menuQLCH.setVisible(true);
-                    break;
-                case 1:
-                    Menu_NVCH menuNVCH = new Menu_NVCH(manv);
-                    this.setVisible(false);
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "THÔNG BÁO",
-                        JOptionPane.OK_OPTION);
-                    menuNVCH.setVisible(true);
-                    break;
-                case 2:
-                    Menu_NVHT menuNVHT = new Menu_NVHT(manv);
-                    this.setVisible(false);
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "THÔNG BÁO",
-                        JOptionPane.OK_OPTION);
-                    menuNVHT.setVisible(true);
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(this, "Tên đăng nhập và mật khẩu không hợp lệ", "THÔNG BÁO",
-                        JOptionPane.ERROR_MESSAGE);
-                    txtPassword.setText("");
-                    break;
-            }
+                txtPassword.setText("");
+                break;
+        }
     }//GEN-LAST:event_btnOKActionPerformed
 
     private void txtUserNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusGained
@@ -292,6 +300,10 @@ public class DangNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtPassword.setText("");
     }//GEN-LAST:event_txtPasswordFocusGained
+
+    private void txtUserNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserNameFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserNameFocusLost
 
     /**
      * @param args the command line arguments
