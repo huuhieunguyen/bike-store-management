@@ -73,7 +73,11 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+=======
+                      <Component id="jLabel5" min="-2" pref="160" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -136,7 +140,15 @@
                       <EmptySpace min="45" pref="45" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                       <Component id="txtPassword" min="-2" pref="154" max="-2" attributes="0"/>
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DangNhap.form
+                      <Component id="txtPassword" min="-2" pref="154" max="-2" attributes="0"/>
+=======
+                      <Component id="txtMatKhau" min="-2" pref="154" max="-2" attributes="0"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DangNhap.form
+>>>>>>> Stashed changes
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="95" pref="95" max="-2" attributes="0"/>
@@ -166,7 +178,15 @@
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                           <Component id="txtPassword" min="-2" pref="26" max="-2" attributes="0"/>
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DangNhap.form
+                          <Component id="txtPassword" min="-2" pref="26" max="-2" attributes="0"/>
+=======
+                          <Component id="txtMatKhau" min="-2" pref="26" max="-2" attributes="0"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DangNhap.form
+>>>>>>> Stashed changes
                       </Group>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Component id="jSeparator1" min="-2" pref="14" max="-2" attributes="0"/>
@@ -186,6 +206,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
+<<<<<<< Updated upstream
                 <Property name="text" type="java.lang.String" value="username"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -193,11 +214,34 @@
               </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtUserNameFocusGained"/>
+=======
+                <Property name="text" type="java.lang.String" value="username" noResource="true"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Text Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtUserNameFocusGained"/>
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DangNhap.form
+>>>>>>> Stashed changes
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtUserNameFocusLost"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserNameActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="txtPassword">
+<<<<<<< Updated upstream
+=======
+=======
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtUserNameMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserNameActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="txtMatKhau">
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DangNhap.form
+>>>>>>> Stashed changes
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="ff" red="cc" type="rgb"/>
@@ -205,14 +249,29 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
+<<<<<<< Updated upstream
                 <Property name="text" type="java.lang.String" value="password"/>
+=======
+                <Property name="text" type="java.lang.String" value="password" noResource="true"/>
+>>>>>>> Stashed changes
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
               </Properties>
               <Events>
+<<<<<<< Updated upstream
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPasswordFocusGained"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DangNhap.form
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPasswordFocusGained"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
+=======
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtMatKhauFocusGained"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtMatKhauMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMatKhauActionPerformed"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DangNhap.form
+>>>>>>> Stashed changes
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
@@ -263,17 +322,41 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
                       <Component id="btnOK" alignment="0" pref="87" max="32767" attributes="0"/>
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DangNhap.form
+                      <Component id="btnOK" alignment="0" pref="87" max="32767" attributes="0"/>
+=======
+                      <Component id="bntOK" alignment="0" pref="87" max="32767" attributes="0"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DangNhap.form
+>>>>>>> Stashed changes
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
                       <Component id="btnOK" alignment="1" pref="28" max="32767" attributes="0"/>
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DangNhap.form
+                      <Component id="btnOK" alignment="1" pref="28" max="32767" attributes="0"/>
+=======
+                      <Component id="bntOK" alignment="1" pref="28" max="32767" attributes="0"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DangNhap.form
+>>>>>>> Stashed changes
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
+<<<<<<< Updated upstream
                 <Component class="javax.swing.JButton" name="btnOK">
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DangNhap.form
+                <Component class="javax.swing.JButton" name="btnOK">
+=======
+                <Component class="javax.swing.JButton" name="bntOK">
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DangNhap.form
+>>>>>>> Stashed changes
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -290,7 +373,15 @@
                     <Property name="focusPainted" type="boolean" value="false"/>
                   </Properties>
                   <Events>
+<<<<<<< Updated upstream
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOKActionPerformed"/>
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DangNhap.form
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOKActionPerformed"/>
+=======
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntOKActionPerformed"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DangNhap.form
+>>>>>>> Stashed changes
                   </Events>
                 </Component>
               </SubComponents>

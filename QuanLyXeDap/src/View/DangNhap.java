@@ -261,7 +261,10 @@ public class DangNhap extends javax.swing.JFrame {
         TaiKhoan tk = new TaiKhoan();
         int i = tk.ktDangNhap(username, password);
         String manv = tk.getManv(username, password);
+<<<<<<< Updated upstream
         
+=======
+>>>>>>> Stashed changes
         switch (i) {
             case 0:
                 Menu_QLCH menuQLCH = new Menu_QLCH(manv);

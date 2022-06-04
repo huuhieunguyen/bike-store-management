@@ -28,10 +28,20 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DoanhThu.form
+>>>>>>> Stashed changes
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
+<<<<<<< Updated upstream
+=======
+=======
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DoanhThu.form
+>>>>>>> Stashed changes
       </Group>
     </DimensionLayout>
   </Layout>
@@ -47,14 +57,35 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DoanhThu.form
+>>>>>>> Stashed changes
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Component id="jButton2" min="-2" pref="187" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="338" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
+=======
+=======
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jMonthChooser1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                  <Component id="jYearChooser1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                  <Component id="bntSearch" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DoanhThu.form
+>>>>>>> Stashed changes
               </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DoanhThu.form
+>>>>>>> Stashed changes
                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="758" max="-2" attributes="0"/>
                       </Group>
@@ -68,12 +99,35 @@
                       </Group>
                   </Group>
                   <EmptySpace pref="62" max="32767" attributes="0"/>
+<<<<<<< Updated upstream
+=======
+=======
+                          <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="499" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="bntBCTK" min="-2" max="-2" attributes="0"/>
+                              <Component id="pnlChart" min="-2" pref="544" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="59" max="32767" attributes="0"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DoanhThu.form
+>>>>>>> Stashed changes
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DoanhThu.form
+>>>>>>> Stashed changes
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -94,6 +148,29 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton2" pref="38" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
+=======
+=======
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jMonthChooser1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jYearChooser1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="bntSearch" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="129" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="pnlChart" min="-2" pref="304" max="-2" attributes="0"/>
+                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="bntBCTK" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="15" max="32767" attributes="0"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DoanhThu.form
+>>>>>>> Stashed changes
               </Group>
           </Group>
         </DimensionLayout>
@@ -132,7 +209,15 @@
             </Component>
           </SubComponents>
         </Container>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JButton" name="jButton1">
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DoanhThu.form
+        <Component class="javax.swing.JButton" name="jButton1">
+=======
+        <Component class="javax.swing.JButton" name="bntSearch">
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DoanhThu.form
+>>>>>>> Stashed changes
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -153,9 +238,25 @@
             </Property>
           </Properties>
           <Events>
+<<<<<<< Updated upstream
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
         </Component>
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DoanhThu.form
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
+=======
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntSearchActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="com.toedter.calendar.JMonthChooser" name="jMonthChooser1">
+        </Component>
+        <Component class="com.toedter.calendar.JYearChooser" name="jYearChooser1">
+        </Component>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DoanhThu.form
+>>>>>>> Stashed changes
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -164,7 +265,15 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="0" type="rgb"/>
             </Property>
+<<<<<<< Updated upstream
             <Property name="text" type="java.lang.String" value="T&#x1ea0;O B&#xc1;O C&#xc1;O TH&#x1ed0;NG K&#xca;"/>
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DoanhThu.form
+            <Property name="text" type="java.lang.String" value="T&#x1ea0;O B&#xc1;O C&#xc1;O TH&#x1ed0;NG K&#xca;"/>
+=======
+            <Property name="text" type="java.lang.String" value="Bi&#x1ec3;u &#x111;&#x1ed3;"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DoanhThu.form
+>>>>>>> Stashed changes
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
                 <BevelBorder/>
@@ -175,9 +284,38 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
           </Events>
         </Component>
+<<<<<<< Updated upstream
         <Component class="com.toedter.calendar.JMonthChooser" name="jMonthChooser1">
         </Component>
         <Component class="com.toedter.calendar.JYearChooser" name="jYearChooser1">
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DoanhThu.form
+        <Component class="com.toedter.calendar.JMonthChooser" name="jMonthChooser1">
+        </Component>
+        <Component class="com.toedter.calendar.JYearChooser" name="jYearChooser1">
+=======
+        <Container class="javax.swing.JPanel" name="pnlChart">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Bi&#x1ec3;u &#x111;&#x1ed3;">
+                  <Font PropertyName="font" name="Segoe UI" size="12" style="1"/>
+                </TitledBorder>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+        </Container>
+        <Component class="javax.swing.JButton" name="bntBCTK">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="T&#x1ea0;O B&#xc1;O C&#xc1;O TH&#x1ed0;NG K&#xca;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntBCTKActionPerformed"/>
+          </Events>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DoanhThu.form
+>>>>>>> Stashed changes
         </Component>
       </SubComponents>
     </Container>

@@ -41,6 +41,10 @@
               <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="147" max="32767" attributes="0"/>
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/QL_Kho.form
+>>>>>>> Stashed changes
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -53,6 +57,15 @@
                           <EmptySpace min="-2" pref="390" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+<<<<<<< Updated upstream
+=======
+=======
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/QL_Kho.form
+>>>>>>> Stashed changes
               </Group>
           </Group>
         </DimensionLayout>
@@ -66,9 +79,19 @@
                       <Component id="jButton1" alignment="3" min="-2" pref="86" max="-2" attributes="0"/>
                       <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+<<<<<<< Updated upstream
                   <EmptySpace pref="74" max="32767" attributes="0"/>
                   <Component id="btnQuayLai" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/QL_Kho.form
+                  <EmptySpace pref="74" max="32767" attributes="0"/>
+                  <Component id="btnQuayLai" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+=======
+                  <EmptySpace pref="167" max="32767" attributes="0"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/QL_Kho.form
+>>>>>>> Stashed changes
               </Group>
           </Group>
         </DimensionLayout>
@@ -105,6 +128,10 @@
             <Property name="text" type="java.lang.String" value="B&#xc1;O C&#xc1;O TH&#x1ed0;NG K&#xca;"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/QL_Kho.form
+>>>>>>> Stashed changes
         <Component class="javax.swing.JButton" name="btnQuayLai">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -116,6 +143,11 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuayLaiActionPerformed"/>
           </Events>
         </Component>
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/QL_Kho.form
+>>>>>>> Stashed changes
       </SubComponents>
     </Container>
   </SubComponents>

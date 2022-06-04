@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 package Process;
 
@@ -146,19 +147,51 @@ public class SanPham {
 
         try (Connection con = ConnectionUtils.getMyConnection()){
             String query = "SELECT TENSP FROM SANPHAM WHERE MASP = '" +masp+ "'";
+=======
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Process;
+
+import ConnectDB.ConnectionUtils;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+/**
+ *
+ * @author HOME
+ */
+public class SanPham {
+
+    public String getTensp(String masp) {
+        String i = null;
+
+        try ( Connection con = ConnectionUtils.getMyConnection()) {
+            String query = "SELECT TENSP FROM SANPHAM WHERE MASP = '" + masp + "'";
+>>>>>>> Stashed changes
             Statement stat = con.createStatement();
             ResultSet rs = stat.executeQuery(query);
             while (rs.next()) {
                 i = rs.getString(1);
             }
             return i;
+<<<<<<< Updated upstream
         }
         catch(Exception e){
+=======
+        } catch (Exception e) {
+>>>>>>> Stashed changes
             System.out.println(e);
         }
         return i;
     }
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
     public String getDVT(String masp) {
         String i = null;
 
@@ -209,5 +242,8 @@ public class SanPham {
         }
         return i;
     }
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
 }

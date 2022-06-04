@@ -2,6 +2,7 @@
 package Process;
 
 import java.util.ArrayList;
+<<<<<<< Updated upstream
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,15 @@ public class KhachHang {
     /**
     * @author Nguyen Huu Hieu
     */
+=======
+import java.util.List;
+
+/**
+ *
+ * @author Nguyen Huu Hieu
+ */
+public class KhachHang {
+>>>>>>> Stashed changes
     // Tao List thuoc tinh Khach Hang
     private static List<String> KhachHang = new ArrayList<>();
     // Them cac thuoc tinh (phan tu) vao List Khach Hang
@@ -26,6 +36,7 @@ public class KhachHang {
         return KhachHang;
     }
     
+<<<<<<< Updated upstream
     /**
     * @author Tran Ngoc My Phuong
     */
@@ -97,4 +108,6 @@ public class KhachHang {
             java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
         this.ngSinh = sqlStartDate;
     }
+=======
+>>>>>>> Stashed changes
 }

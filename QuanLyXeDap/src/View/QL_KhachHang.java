@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 package View;
 
@@ -17,11 +18,26 @@ import javax.swing.table.JTableHeader;
 public class QL_KhachHang extends javax.swing.JFrame {
 
      private String makh;
+=======
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package View;
+
+/**
+ *
+ * @author User
+ */
+public class QL_KhachHang extends javax.swing.JFrame {
+
+>>>>>>> Stashed changes
     /**
      * Creates new form QL_NhanVien
      */
     public QL_KhachHang() {
         initComponents();
+<<<<<<< Updated upstream
         
         loadData();
         HeaderAdjust();
@@ -88,6 +104,8 @@ public class QL_KhachHang extends javax.swing.JFrame {
         }
         //Khong cho user edit
         TableKH.setDefaultEditor(Object.class, null);
+=======
+>>>>>>> Stashed changes
     }
 
     /**
@@ -106,8 +124,13 @@ public class QL_KhachHang extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
+<<<<<<< Updated upstream
         TableKH = new javax.swing.JTable();
         btnChon = new javax.swing.JButton();
+=======
+        jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+>>>>>>> Stashed changes
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -128,7 +151,11 @@ public class QL_KhachHang extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+<<<<<<< Updated upstream
         TableKH.setModel(new javax.swing.table.DefaultTableModel(
+=======
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+>>>>>>> Stashed changes
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -139,6 +166,7 @@ public class QL_KhachHang extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+<<<<<<< Updated upstream
         jScrollPane1.setViewportView(TableKH);
 
         btnChon.setBackground(new java.awt.Color(153, 153, 153));
@@ -151,6 +179,15 @@ public class QL_KhachHang extends javax.swing.JFrame {
                 btnChonActionPerformed(evt);
             }
         });
+=======
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton2.setBackground(new java.awt.Color(153, 153, 153));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(204, 255, 204));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Selection.png"))); // NOI18N
+        jButton2.setText("CHỌN");
+>>>>>>> Stashed changes
 
         jButton3.setBackground(new java.awt.Color(204, 255, 153));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -206,7 +243,11 @@ public class QL_KhachHang extends javax.swing.JFrame {
                 .addGap(99, 99, 99)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+<<<<<<< Updated upstream
                 .addComponent(btnChon)
+=======
+                .addComponent(jButton2)
+>>>>>>> Stashed changes
                 .addGap(29, 29, 29)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
@@ -237,7 +278,11 @@ public class QL_KhachHang extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+<<<<<<< Updated upstream
                     .addComponent(btnChon, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> Stashed changes
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -273,6 +318,7 @@ public class QL_KhachHang extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+<<<<<<< Updated upstream
     private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
         // TODO add your handling code here:
         if(makh != null) {
@@ -287,6 +333,11 @@ public class QL_KhachHang extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
+=======
+    /**
+     * @param args the command line arguments
+     */
+>>>>>>> Stashed changes
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -314,7 +365,10 @@ public class QL_KhachHang extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+<<<<<<< Updated upstream
             @Override
+=======
+>>>>>>> Stashed changes
             public void run() {
                 new QL_KhachHang().setVisible(true);
             }
@@ -322,9 +376,14 @@ public class QL_KhachHang extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< Updated upstream
     private javax.swing.JTable TableKH;
     private javax.swing.JButton btnChon;
     private javax.swing.JButton jButton1;
+=======
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+>>>>>>> Stashed changes
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -333,6 +392,10 @@ public class QL_KhachHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+<<<<<<< Updated upstream
+=======
+    private javax.swing.JTable jTable1;
+>>>>>>> Stashed changes
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

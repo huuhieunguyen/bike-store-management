@@ -38,6 +38,7 @@ public class TaiKhoan {
         }
         return "";
     }
+<<<<<<< Updated upstream
     
     public int getVaiTro (String manv) {
         int i = -1;
@@ -56,4 +57,6 @@ public class TaiKhoan {
         }
         return i;
     }
+=======
+>>>>>>> Stashed changes
 }

@@ -54,7 +54,15 @@
                       <Group type="102" attributes="0">
                           <Component id="jButton1" min="-2" pref="141" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+<<<<<<< Updated upstream
                           <Component id="jButton2" min="-2" pref="141" max="-2" attributes="0"/>
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DS_NhapKho.form
+                          <Component id="jButton2" min="-2" pref="141" max="-2" attributes="0"/>
+=======
+                          <Component id="bntPrint" min="-2" pref="141" max="-2" attributes="0"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DS_NhapKho.form
+>>>>>>> Stashed changes
                       </Group>
                       <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -67,12 +75,27 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="40" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DS_NhapKho.form
+>>>>>>> Stashed changes
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton1" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="jButton2" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
+=======
+=======
+                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="366" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButton1" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="bntPrint" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DS_NhapKho.form
+>>>>>>> Stashed changes
                   </Group>
                   <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
@@ -103,7 +126,15 @@
                     <Column editable="true" title="Title 1" type="java.lang.Object"/>
                     <Column editable="true" title="Title 2" type="java.lang.Object"/>
                     <Column editable="true" title="Title 3" type="java.lang.Object"/>
+<<<<<<< Updated upstream
                     <Column editable="true" title="Title 4" type="java.lang.Object"/>
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DS_NhapKho.form
+                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
+=======
+                    <Column editable="true" title="Title 4" type="java.lang.Double"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DS_NhapKho.form
+>>>>>>> Stashed changes
                   </Table>
                 </Property>
               </Properties>
@@ -139,7 +170,15 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JButton" name="jButton2">
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DS_NhapKho.form
+        <Component class="javax.swing.JButton" name="jButton2">
+=======
+        <Component class="javax.swing.JButton" name="bntPrint">
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DS_NhapKho.form
+>>>>>>> Stashed changes
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="99" type="rgb"/>
@@ -165,7 +204,15 @@
             </Property>
           </Properties>
           <Events>
+<<<<<<< Updated upstream
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+=======
+<<<<<<< Updated upstream:QuanLyXeDap/src/View/DS_NhapKho.form
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+=======
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntPrintActionPerformed"/>
+>>>>>>> Stashed changes:Quan Ly Xe Dap/src/View/DS_NhapKho.form
+>>>>>>> Stashed changes
           </Events>
         </Component>
       </SubComponents>
