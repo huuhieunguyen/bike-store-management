@@ -14,8 +14,9 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author User
+ * @author Tran Ngoc My Phuong
  */
+
 public class TT_KhachHang extends javax.swing.JFrame {
 
     /**
