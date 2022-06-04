@@ -367,10 +367,10 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
             + selectedValue);
         }
     }//GEN-LAST:event_cbxLoaiTT_KMActionPerformed
-
+ 
     private void tblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseClicked
         // TODO add your handling code here:
-        //masp = tblKhuyenMai.getValueAt(tblKhuyenMai.getSelectedRow(), 0) + "";        
+        makm = tblKhuyenMai.getValueAt(tblKhuyenMai.getSelectedRow(), 0) + "";        
     }//GEN-LAST:event_tblKhuyenMaiMouseClicked
        
     /**

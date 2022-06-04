@@ -209,7 +209,7 @@ public class TT_SanPham extends javax.swing.JFrame {
         //Kiem tra ma sp
         StringBuilder sb = new StringBuilder();
         if(txtMaSP.getText().equals("")){
-            sb.append("Ma san pham khong duoc de trong");
+            sb.append("Mã sản phẩm không được để trống");
             txtMaSP.setBackground(Color.red);
         }else{
             txtMaSP.setBackground(Color.white);
@@ -230,7 +230,7 @@ public class TT_SanPham extends javax.swing.JFrame {
             SanPham dao= new SanPham();
             dao.update(sp);
             
-            JOptionPane.showMessageDialog(this, "Sua thanh cong");
+            JOptionPane.showMessageDialog(this, "Sửa thành công");
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "Error" +e.getMessage());
             e.printStackTrace();
@@ -241,7 +241,7 @@ public class TT_SanPham extends javax.swing.JFrame {
         // TODO add your handling code here:
         StringBuilder sb = new StringBuilder();
         if(txtMaSP.getText().equals("")){
-            sb.append("Ma san pham khong duoc de trong");
+            sb.append("Mã sản phẩm không được để trống");
             txtMaSP.setBackground(Color.red);
         }else{
             txtMaSP.setBackground(Color.white);
@@ -258,7 +258,7 @@ public class TT_SanPham extends javax.swing.JFrame {
             SanPham dao= new SanPham();
             dao.delete(sp);
             
-            JOptionPane.showMessageDialog(this, "Xoa thanh cong");
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
             this.dispose();
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "Error" +e.getMessage());

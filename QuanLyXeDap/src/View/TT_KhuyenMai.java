@@ -1,6 +1,8 @@
 
 package View;
 
+import Process.KhuyenMai;
+
 /**
  *
  * @author User
@@ -10,8 +12,13 @@ public class TT_KhuyenMai extends javax.swing.JFrame {
     /**
      * Creates new form TT_SanPham
      */
-    public TT_KhuyenMai() {
+    public TT_KhuyenMai(String maKM) {
         initComponents();
+        KhuyenMai km = new KhuyenMai();
+        txtNoiDung.setText(km.getNoiDung(maKM));
+        txtMaKM.setText(maKM);
+        txtDinhMuc.setText(Float.toString(km.getDinhMuc(maKM)));
+        txtPhanTram.setText(Float.toString(km.getPhanTram(maKM)));
     }
 
     /**
@@ -29,7 +36,7 @@ public class TT_KhuyenMai extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtMaKM = new javax.swing.JTextField();
         txtNoiDung = new javax.swing.JTextField();
         btnQuayLai = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
@@ -59,7 +66,7 @@ public class TT_KhuyenMai extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("PHẦN TRĂM");
 
-        jTextField1.setText("auto (unedittable)");
+        txtMaKM.setText("auto (unedittable)");
 
         btnQuayLai.setBackground(new java.awt.Color(204, 204, 204));
         btnQuayLai.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -120,7 +127,7 @@ public class TT_KhuyenMai extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
+                            .addComponent(txtMaKM)
                             .addComponent(txtNoiDung)
                             .addComponent(txtDinhMuc, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                             .addComponent(txtPhanTram)))
@@ -142,7 +149,7 @@ public class TT_KhuyenMai extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -219,8 +226,10 @@ public class TT_KhuyenMai extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            private String maKM;
+            @Override
             public void run() {
-                new TT_KhuyenMai().setVisible(true);
+                new TT_KhuyenMai(maKM).setVisible(true);
             }
         });
     }
@@ -235,8 +244,8 @@ public class TT_KhuyenMai extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JFormattedTextField txtDinhMuc;
+    private javax.swing.JTextField txtMaKM;
     private javax.swing.JTextField txtNoiDung;
     private javax.swing.JFormattedTextField txtPhanTram;
     // End of variables declaration//GEN-END:variables
