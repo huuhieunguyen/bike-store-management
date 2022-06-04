@@ -347,6 +347,7 @@ public class HoaDon extends javax.swing.JFrame {
         // TODO add your handling code here:
         String maHD = cbxHoaDon.getSelectedItem().toString();
         
+        this.setVisible(false);
         CTHD form = new CTHD(maHD);
         form.setVisible(true);
     }//GEN-LAST:event_btnTraCuuActionPerformed

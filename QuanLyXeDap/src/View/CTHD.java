@@ -412,7 +412,9 @@ public class CTHD extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTienGiamActionPerformed
 
     private void tbnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnQuayLaiActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        View.HoaDon mhHD = new View.HoaDon();
+        mhHD.setVisible(true);
     }//GEN-LAST:event_tbnQuayLaiActionPerformed
 
 //    /**

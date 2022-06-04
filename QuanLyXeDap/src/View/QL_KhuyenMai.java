@@ -352,9 +352,9 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
     private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
         // TODO add your handling code here:
          if(makm != null) {
-            View.TT_KhuyenMai km = new TT_KhuyenMai(makm);
+//            View.TT_KhuyenMai km = new TT_KhuyenMai(makm);
             this.setVisible(false);
-            km.setVisible(true);
+//            km.setVisible(true);
         }
     }//GEN-LAST:event_btnChonActionPerformed
 

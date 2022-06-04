@@ -376,7 +376,7 @@ public class Menu_NVCH extends javax.swing.JFrame {
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
         // TODO add your handling code here:
         View.QL_SanPham mhSanPham = new QL_SanPham();
-        this.setVisible(false);
+//        this.setVisible(false);
         mhSanPham.setVisible(true);
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
