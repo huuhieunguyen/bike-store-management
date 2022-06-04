@@ -4,6 +4,18 @@
  */
 package View;
 
+import ConnectDB.ConnectionUtils;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
+import java.util.Vector;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+
 /**
  *
  * @author User
@@ -15,8 +27,74 @@ public class QL_NhanVien extends javax.swing.JFrame {
      */
     public QL_NhanVien() {
         initComponents();
+        loadData();
+        HeaderAdjust();
     }
+    public void HeaderAdjust() {
+        //Set do rong cua bang
+        TableNV.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
 
+        TableNV.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jScrollPane1.setViewportView(TableNV);
+
+        if (TableNV.getColumnModel().getColumnCount() > 0) {
+            TableNV.getColumnModel().getColumn(0).setMinWidth(50);
+            TableNV.getColumnModel().getColumn(0).setMaxWidth(50);
+            TableNV.getColumnModel().getColumn(1).setMinWidth(140);
+            TableNV.getColumnModel().getColumn(1).setMaxWidth(140);
+            TableNV.getColumnModel().getColumn(2).setMinWidth(60);
+            TableNV.getColumnModel().getColumn(2).setMaxWidth(60);
+            TableNV.getColumnModel().getColumn(3).setMinWidth(90);
+            TableNV.getColumnModel().getColumn(3).setMaxWidth(90);
+            TableNV.getColumnModel().getColumn(4).setMinWidth(85);
+            TableNV.getColumnModel().getColumn(4).setMaxWidth(85);
+            TableNV.getColumnModel().getColumn(5).setMaxWidth(100);
+            TableNV.getColumnModel().getColumn(5).setMinWidth(100);
+            TableNV.getColumnModel().getColumn(6).setMaxWidth(70);
+            TableNV.getColumnModel().getColumn(6).setMinWidth(70);
+            TableNV.getColumnModel().getColumn(7).setMaxWidth(30);
+            TableNV.getColumnModel().getColumn(7).setMinWidth(30);
+            TableNV.getColumnModel().getColumn(8).setMaxWidth(20);
+            TableNV.getColumnModel().getColumn(8).setMinWidth(20);
+            TableNV.getColumnModel().getColumn(9).setMaxWidth(20);
+            TableNV.getColumnModel().getColumn(9).setMinWidth(20);
+        }
+        //Set tieu de
+        JTableHeader THeader = TableNV.getTableHeader();
+        THeader.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        ((DefaultTableCellRenderer) THeader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+    }
+    DefaultTableModel tbn = new DefaultTableModel();
+    public void loadData() {
+        String[] columnNames = {"Mã NV", "Họ tên", "Giới tính", "Số điện thoại", "Ngày sinh", "Địa chỉ","CMND","Ngày vào làm","Mã NGQL","Hệ số","Đơn vị"};
+        tbn = new DefaultTableModel(columnNames, 0);
+        try ( Connection con = ConnectionUtils.getMyConnection()) {
+            int number;
+            Vector row, column;
+            column = new Vector();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("Select * from NHANVIEN ORDER BY MANV");
+            ResultSetMetaData metadata = rs.getMetaData();
+            // tra ve so cot
+            number = metadata.getColumnCount();
+
+            while (rs.next()) {
+                row = new Vector();
+                for (int i = 1; i <= number; i++) {
+                    // lay ra tieu de cua cac cot
+                    row.addElement(rs.getObject(i));
+                }
+                tbn.addRow(row);
+                TableNV.setModel(tbn);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        //Khong cho user edit
+        TableNV.setDefaultEditor(Object.class, null);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,6 +104,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        TableNV = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -34,10 +113,27 @@ public class QL_NhanVien extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        TableNV = new javax.swing.JTable();
+        btnChon = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+
+        TableNV.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        TableNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableNVMouseClicked(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,11 +149,11 @@ public class QL_NhanVien extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("LOẠI THÔNG TIN");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã NV", "Họ tên", "Số điện thoại", "CMND", "Mã người quản lý", "Mã đơn vị" }));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search.png"))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableNV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -68,13 +164,22 @@ public class QL_NhanVien extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        TableNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableNVMouseClicked(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(153, 153, 153));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 255, 204));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Selection.png"))); // NOI18N
-        jButton2.setText("CHỌN");
+        btnChon.setBackground(new java.awt.Color(153, 153, 153));
+        btnChon.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnChon.setForeground(new java.awt.Color(204, 255, 204));
+        btnChon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Selection.png"))); // NOI18N
+        btnChon.setText("CHỌN");
+        btnChon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(204, 255, 153));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -122,7 +227,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
                 .addGap(99, 99, 99)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnChon)
                 .addGap(29, 29, 29)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
@@ -149,11 +254,11 @@ public class QL_NhanVien extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnChon, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
@@ -184,6 +289,20 @@ public class QL_NhanVien extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+    private String manv;
+    private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
+        // TODO add your handling code here:
+        if(manv != null) {
+            TT_NhanVien kh = new TT_NhanVien(manv);
+            this.setVisible(false);
+            kh.setVisible(true);
+        }
+    }//GEN-LAST:event_btnChonActionPerformed
+
+    private void TableNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableNVMouseClicked
+        // TODO add your handling code here:
+        manv = TableNV.getValueAt(TableNV.getSelectedRow(), 0) + "";
+    }//GEN-LAST:event_TableNVMouseClicked
 
     /**
      * @param args the command line arguments
@@ -221,8 +340,9 @@ public class QL_NhanVien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TableNV;
+    private javax.swing.JButton btnChon;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -231,7 +351,6 @@ public class QL_NhanVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
