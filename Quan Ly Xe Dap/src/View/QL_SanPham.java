@@ -4,6 +4,13 @@
  */
 package View;
 
+import ConnectDB.ConnectionUtils;
+import java.sql.*;
+import java.util.Vector;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author User
@@ -15,8 +22,46 @@ public class QL_SanPham extends javax.swing.JFrame {
      */
     public QL_SanPham() {
         initComponents();
+        loadData();
     }
+    
+    public void loadData() {
+        //Set ten bang
+        String[] columnNames = {"Mã SP", "Tên sản phẩm", "Đơn vị tính", "Nước sản xuất", "Đơn giá", "Tổng số lượng"};
+        DefaultTableModel tbn = new DefaultTableModel(columnNames, 0);
+        //Tao ket noi voi SQL
+        try ( Connection con = ConnectionUtils.getMyConnection()) {
+            int number;
+            Vector row, column;
+            column = new Vector();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("Select * from SANPHAM");
+            ResultSetMetaData metadata = rs.getMetaData();
+            // tra ve so cot
+            number = metadata.getColumnCount();
 
+//            for(int i =1; i <=number; i++){
+//                // lay ra tieu de cua cac cot
+//                column.add(metadata.getColumnName(i));
+//            }
+//            tbn.setColumnIdentifiers(column);
+            while (rs.next()) {
+                row = new Vector();
+                for (int i = 1; i <= number; i++) {
+                    // lay ra tieu de cua cac cot
+                    row.addElement(rs.getObject(i));
+                }
+                tbn.addRow(row);
+                TableSP.setModel(tbn);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        //Khong cho user edit
+        TableSP.setDefaultEditor(Object.class, null);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +79,7 @@ public class QL_SanPham extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TableSP = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -59,7 +104,7 @@ public class QL_SanPham extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search.png"))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -70,13 +115,23 @@ public class QL_SanPham extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        TableSP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableSPMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TableSP);
 
         jButton2.setBackground(new java.awt.Color(153, 153, 153));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(204, 255, 204));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Selection.png"))); // NOI18N
         jButton2.setText("CHỌN");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(204, 255, 153));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -187,6 +242,18 @@ public class QL_SanPham extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(masp != null) {
+            TT_SanPham sp = new TT_SanPham(masp);
+            sp.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private String masp;
+    private void TableSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableSPMouseClicked
+        masp = TableSP.getValueAt(TableSP.getSelectedRow(), 0) + "";
+    }//GEN-LAST:event_TableSPMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -226,6 +293,7 @@ public class QL_SanPham extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TableSP;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -236,7 +304,6 @@ public class QL_SanPham extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

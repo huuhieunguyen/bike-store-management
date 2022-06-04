@@ -24,6 +24,24 @@ public class TaiKhoan {
         return -1;
     }
     
+    public int getVaiTro (String manv) {
+        int i = -1;
+
+        try (Connection con = ConnectionUtils.getMyConnection()){
+            String query = "SELECT VAITRO FROM TAIKHOAN WHERE MANV = '" +manv+ "'";
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery(query);
+            while (rs.next()) {
+                i = rs.getInt(1);
+            }
+            return i;
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return i;
+    }
+    
     public String getManv(String tenDN, String matkhau) {
         try ( Connection con = ConnectionUtils.getMyConnection()) {
             CallableStatement stmt = con.prepareCall("{? = call func_getManv (?, ?)}");

@@ -4,12 +4,16 @@
  */
 package View;
 
+import Process.TaiKhoan;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
  */
 public class QL_NhanVien extends javax.swing.JFrame {
 
+    private String manv;
     /**
      * Creates new form QL_NhanVien
      */
@@ -37,7 +41,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnQuayLai = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,17 +91,17 @@ public class QL_NhanVien extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 51, 51));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Backward (black).png"))); // NOI18N
-        jButton1.setText("QUAY LẠI ");
-        jButton1.setMaximumSize(new java.awt.Dimension(131, 38));
-        jButton1.setMinimumSize(new java.awt.Dimension(131, 38));
-        jButton1.setPreferredSize(new java.awt.Dimension(131, 38));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnQuayLai.setBackground(new java.awt.Color(204, 204, 204));
+        btnQuayLai.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnQuayLai.setForeground(new java.awt.Color(51, 51, 51));
+        btnQuayLai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Backward (black).png"))); // NOI18N
+        btnQuayLai.setText("QUAY LẠI ");
+        btnQuayLai.setMaximumSize(new java.awt.Dimension(131, 38));
+        btnQuayLai.setMinimumSize(new java.awt.Dimension(131, 38));
+        btnQuayLai.setPreferredSize(new java.awt.Dimension(131, 38));
+        btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnQuayLaiActionPerformed(evt);
             }
         });
 
@@ -120,7 +124,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(29, 29, 29)
@@ -155,7 +159,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -181,9 +185,30 @@ public class QL_NhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        TaiKhoan tk = new TaiKhoan();
+        int i = tk.getVaiTro(manv);
+        switch (i) {
+            case 0:
+                Menu_QLCH menuQLCH = new Menu_QLCH(manv);
+                this.setVisible(false);
+                menuQLCH.setVisible(true);
+                break;
+            case 1:
+                Menu_NVCH menuNVCH = new Menu_NVCH(manv);
+                this.setVisible(false);
+                menuNVCH.setVisible(true);
+                break;
+            case 2:
+                Menu_NVHT menuNVHT = new Menu_NVHT(manv);
+                this.setVisible(false);
+                menuNVHT.setVisible(true);
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_btnQuayLaiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,7 +246,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnQuayLai;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;

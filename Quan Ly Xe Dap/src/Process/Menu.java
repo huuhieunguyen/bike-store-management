@@ -60,6 +60,25 @@ public class Menu {
         }
         return i;
     }
+    
+    public String getSDT_CH(String mach){
+        String i = null;
+
+        try (Connection con = ConnectionUtils.getMyConnection()){
+            String query = "SELECT SDT FROM CUAHANG WHERE MACH = '" +mach+ "'";
+            Statement stat = con.createStatement();
+            ResultSet rs = stat.executeQuery(query);
+            while (rs.next()) {
+                i = rs.getString(1);
+            }
+            return i;
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return i;
+    }
+    
     public String getTenpb(String mapb){
         String i = null;
 

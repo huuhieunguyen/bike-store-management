@@ -4,17 +4,96 @@
  */
 package View;
 
+import ConnectDB.ConnectionUtils;
+import com.itextpdf.text.PageSize;
+import java.sql.*;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+import oracle.jdbc.OracleTypes;
+import java.text.NumberFormat;
+import java.util.Locale;
+
+import java.io.*;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+
 /**
  *
- * @author User
+ * @author DOAN TU QUYNH
  */
 public class DS_NhapKho extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DS_NhapKho
-     */
+    DefaultTableModel tbn = new DefaultTableModel();
+
     public DS_NhapKho() {
         initComponents();
+        loadData();
+    }
+
+    public void loadData() {
+        try {
+            DefaultTableModel tbn = new DefaultTableModel();
+            Connection con = ConnectionUtils.getMyConnection();
+            int number;
+            Vector row;
+
+            CallableStatement stmt = con.prepareCall("{? = call func_ds_nhapkho}");
+            stmt.registerOutParameter(1, OracleTypes.CURSOR);
+            stmt.execute();
+            ResultSet rs = (ResultSet) stmt.getObject(1);
+            ResultSetMetaData metadata = rs.getMetaData();
+            number = metadata.getColumnCount(); //Tra ve so cot
+
+            Vector header = new Vector();
+            header.add("Mã sản phẩm");
+            header.add("Tên sản phẩm");
+            header.add("Đơn giá");
+            header.add("Số lượng nhập");
+            header.add("Thành tiền");
+            tbn.setColumnIdentifiers(header);
+
+            NumberFormat nf = NumberFormat.getInstance();
+            Locale locale = new Locale("en", "EN");
+            NumberFormat en = NumberFormat.getInstance(locale);
+
+            long tong = 0;
+            long thanhtien;
+            while (rs.next()) {
+                row = new Vector();
+                for (int i = 1; i <= number; i++) {
+                    row.addElement(rs.getString(i));
+                }
+
+                thanhtien = rs.getLong(3) * rs.getLong(4);
+                String thanhtien1 = en.format(thanhtien);
+                row.addElement(thanhtien1);
+                tong += thanhtien;
+                tbn.addRow(row);
+            }
+            row = new Vector();
+            row.addElement("---");
+            row.addElement("---");
+            row.addElement("---");
+            row.addElement("---");
+            row.addElement("---");
+            tbn.addRow(row);
+            row = new Vector();
+            row.addElement("");
+            row.addElement("");
+            row.addElement("");
+
+            String tong1 = en.format(tong);
+            row.addElement("TỔNG");
+            row.addElement(tong1);
+            tbn.addRow(row);
+            jTable1.setModel(tbn);
+
+        } catch (Exception ex) {
+            System.out.print(ex.toString());
+        }
     }
 
     /**
@@ -31,7 +110,7 @@ public class DS_NhapKho extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bntPrint = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,7 +128,15 @@ public class DS_NhapKho extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
@@ -66,17 +153,17 @@ public class DS_NhapKho extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(153, 204, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(51, 51, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Print.png"))); // NOI18N
-        jButton2.setText("IN");
-        jButton2.setMaximumSize(new java.awt.Dimension(131, 38));
-        jButton2.setMinimumSize(new java.awt.Dimension(131, 38));
-        jButton2.setPreferredSize(new java.awt.Dimension(131, 38));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bntPrint.setBackground(new java.awt.Color(153, 204, 255));
+        bntPrint.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bntPrint.setForeground(new java.awt.Color(51, 51, 255));
+        bntPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Print.png"))); // NOI18N
+        bntPrint.setText("IN");
+        bntPrint.setMaximumSize(new java.awt.Dimension(131, 38));
+        bntPrint.setMinimumSize(new java.awt.Dimension(131, 38));
+        bntPrint.setPreferredSize(new java.awt.Dimension(131, 38));
+        bntPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bntPrintActionPerformed(evt);
             }
         });
 
@@ -93,7 +180,7 @@ public class DS_NhapKho extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(bntPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -102,12 +189,12 @@ public class DS_NhapKho extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bntPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -133,9 +220,94 @@ public class DS_NhapKho extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void bntPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntPrintActionPerformed
+        String path = "";
+        JFileChooser j = new JFileChooser();
+        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int x = j.showSaveDialog(this);
+        if (x == JFileChooser.APPROVE_OPTION) {
+            path = j.getSelectedFile().getPath();
+        }
+
+        Document doc = new Document(PageSize.A4) {
+        };
+        try {
+
+            PdfWriter.getInstance(doc, new FileOutputStream(path + "DS_NhapKho.pdf"));
+            doc.open();
+            doc.addCreationDate();
+            doc.addTitle("Danh sach Nhap kho");
+            doc.addSubject("Danh sach Nhap kho");
+            
+            Paragraph prgTieuDe = new Paragraph("DANH SACH NHAP KHO");
+            prgTieuDe.setAlignment(Element.ALIGN_CENTER);
+            prgTieuDe.setSpacingBefore(10);
+            prgTieuDe.setSpacingAfter(10);
+            doc.add(prgTieuDe);
+            
+            PdfPTable tbl = new PdfPTable(5);
+
+            tbl.addCell("Ma SP");
+            tbl.addCell("Ten SP");
+            tbl.addCell("Don gia");
+            tbl.addCell("SL Nhap");
+            tbl.addCell("Thanh tien");
+
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                String ma = jTable1.getValueAt(i, 0).toString();
+                String ten = jTable1.getValueAt(i, 1).toString();
+                String dgia = jTable1.getValueAt(i, 2).toString();
+                String sl = jTable1.getValueAt(i, 3).toString();
+                String ttien = jTable1.getValueAt(i, 4).toString();
+                tbl.addCell(ma);
+                tbl.addCell(ten);
+                tbl.addCell(dgia);
+                tbl.addCell(sl);
+                tbl.addCell(ttien);
+
+            }
+            doc.add(tbl);
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DS_NhapKho.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException ex) {
+            Logger.getLogger(DS_NhapKho.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        doc.close();
+//        String filename = "DS_NhapKho";
+//        try {
+//            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("reports/"+filename+".pdf"));
+//            document.open();
+//            
+//            //set attributes
+//            document.addCreationDate();
+//            document.addTitle("Danh sach Nhap kho");
+//            document.addSubject("Danh sach Nhap kho");
+//            
+//            Paragraph prgTieuDe = new Paragraph("DANH SACH NHAP KHO", fontTieuDe1);
+//            prgTieuDe.setAlignment(Element.ALIGN_CENTER);
+//            prgTieuDe.setSpacingBefore(10);
+//            prgTieuDe.setSpacingAfter(10);
+//            document.add(prgTieuDe);
+//            
+//            document.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        //Mo file pdf sau khi dinh dang va write
+//        try {
+//            File file = new File("report/"+filename+".pdf");
+//            if(!Desktop.isDesktopSupported()) {
+//                System.out.print("Not supported!");
+//                return;
+//            }
+//            Desktop destop = Desktop.getDesktop();
+//            if(file.exists())
+//                destop.open(file);
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
+    }//GEN-LAST:event_bntPrintActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,8 +345,8 @@ public class DS_NhapKho extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntPrint;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
