@@ -16,7 +16,7 @@ import javax.swing.table.JTableHeader;
 
 /**
  *
- * @author Huu Hieu
+ * @author Nguyen Huu Hieu 
  */
 public class QL_KhuyenMai extends javax.swing.JFrame {
     
