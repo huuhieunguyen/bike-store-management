@@ -49,7 +49,6 @@ public class HoaDon extends javax.swing.JFrame {
     
     public HoaDon(String ma_nv){
         
-//        System.out.println(manv);
         initComponents();
         manv = ma_nv;
 

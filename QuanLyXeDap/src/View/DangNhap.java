@@ -261,6 +261,7 @@ public class DangNhap extends javax.swing.JFrame {
         TaiKhoan tk = new TaiKhoan();
         int i = tk.ktDangNhap(username, password);
         String manv = tk.getManv(username, password);
+        
         switch (i) {
             case 0:
                 Menu_QLCH menuQLCH = new Menu_QLCH(manv);
