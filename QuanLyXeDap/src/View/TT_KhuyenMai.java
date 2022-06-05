@@ -2,6 +2,7 @@
 package View;
 
 import Process.KhuyenMai;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -190,10 +191,30 @@ public class TT_KhuyenMai extends javax.swing.JFrame {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        String maKMtext = txtMaKM.getText();
+        String NDtext = txtNoiDung.getText();
+        float dinhMucText = Float.parseFloat(txtDinhMuc.getText());
+        float phanTramText=Float.parseFloat(txtPhanTram.getText());
+        KhuyenMai km = new KhuyenMai();
+        int i = km.themKhuyenMai(maKMtext, NDtext, dinhMucText,phanTramText);
+        if (i > 0) {
+            JOptionPane.showMessageDialog(this, "Sua thanh cong");
+        } else {
+            JOptionPane.showMessageDialog(this, "Sua that bai");
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        String maKMtext = txtMaKM.getText();
+        KhuyenMai km = new KhuyenMai();
+        int i = km.xoaKhuyenMai(maKMtext);
+        if (i > 0) {
+            JOptionPane.showMessageDialog(this, "Xoa thanh cong");
+        } else {
+            JOptionPane.showMessageDialog(this, "Xoa that bai");
+        }
+        
     }//GEN-LAST:event_btnXoaActionPerformed
 
     /**

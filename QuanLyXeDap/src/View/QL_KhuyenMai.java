@@ -63,7 +63,7 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
     // Load du lieu tu table KhuyenMai trong csdl len jTable
     private void loadHoaDon(){
         try(Connection con = ConnectionUtils.getMyConnection()){
-           String queryHD = "select * from KHUYENMAI";
+           String queryHD = "select * from KHUYENMAI WHERE MAKM NOT LIKE 'KM00' ORDER BY MAKM";
            PreparedStatement ps = con.prepareStatement(queryHD);
            ResultSet rs = ps.executeQuery();
            
@@ -137,7 +137,7 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
         btnChon = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
         btnQuayLai = new javax.swing.JButton();
-        btnSearchKM = new javax.swing.JButton();
+        btnTimKiem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -215,11 +215,10 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
             }
         });
 
-        btnSearchKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search.png"))); // NOI18N
-        btnSearchKM.setBorder(null);
-        btnSearchKM.addActionListener(new java.awt.event.ActionListener() {
+        btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search16x16.png"))); // NOI18N
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchKMActionPerformed(evt);
+                btnTimKiemActionPerformed(evt);
             }
         });
 
@@ -237,8 +236,8 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtTuKhoa_KM)
                     .addComponent(cbxLoaiTT_KM, 0, 168, Short.MAX_VALUE))
-                .addGap(31, 31, 31)
-                .addComponent(btnSearchKM, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTimKiem)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
@@ -262,22 +261,18 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(cbxLoaiTT_KM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtTuKhoa_KM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnChon, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(btnSearchKM, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtTuKhoa_KM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTimKiem))
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnChon, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -311,44 +306,6 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnQuayLaiActionPerformed
 
-    private void btnSearchKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchKMActionPerformed
-        // TODO add your handling code here:
-        try ( java.sql.Connection con = ConnectionUtils.getMyConnection()) {
-            String sql = null;
-            switch (cbxLoaiTT_KM.getSelectedIndex()) {
-                case 0:
-                    sql = "select * from KHUYENMAI WHERE UPPER(MAKM) like '%";
-                    break;
-                case 1:
-                    sql = "select * from KHUYENMAI WHERE UPPER(NOIDUNG) like '%";
-                    break;
-                default:
-                    break;
-            }
-            sql +=txtTuKhoa_KM.getText().toUpperCase()+"%'";
-            System.out.print(sql);
-            Statement stat = con.createStatement();
-
-            ResultSet rs = stat.executeQuery(sql);
-            tblModel.setRowCount(0);
-            while (rs.next()) {
-                tblModel.addRow(new Object[]{
-                    rs.getString("MASP"),
-                    rs.getString("TENSP"),
-                    rs.getString("DVT"),
-                     rs.getString("NUOCSX"),
-                    rs.getString("DONGIA"),
-                    rs.getString("TONGSL"),});
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-            e.printStackTrace();
-        }
-        tblKhuyenMai.setModel(tblModel);
-        setVisible(true);
-    }//GEN-LAST:event_btnSearchKMActionPerformed
-
     private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
         // TODO add your handling code here:
          if(makm != null) {
@@ -372,6 +329,42 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
         // TODO add your handling code here:
         makm = tblKhuyenMai.getValueAt(tblKhuyenMai.getSelectedRow(), 0) + "";        
     }//GEN-LAST:event_tblKhuyenMaiMouseClicked
+
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+        // TODO add your handling code here:
+        try ( java.sql.Connection con = ConnectionUtils.getMyConnection()) {
+            String sql = null;
+            switch (cbxLoaiTT_KM.getSelectedIndex()) {
+                case 0:
+                sql = "select * from KHUYENMAI WHERE UPPER(MAKM) like '%";
+                break;
+                case 1:
+                sql = "select * from KHUYENMAI WHERE UPPER(NOIDUNG) like '%";
+                break;
+                default:
+                break;
+            }
+            sql +=txtTuKhoa_KM.getText().toUpperCase()+"%'";
+            System.out.print(sql);
+            Statement stat = con.createStatement();
+
+            ResultSet rs = stat.executeQuery(sql);
+            tblModel.setRowCount(0);
+            while (rs.next()) {
+                tblModel.addRow(new Object[]{
+                    rs.getString("MAKM"),
+                    rs.getString("NOIDUNG"),
+                    rs.getString("DINHMUC"),
+                    rs.getString("PHANTRAM"),});
+        }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+        tblKhuyenMai.setModel(tblModel);
+        setVisible(true);
+    }//GEN-LAST:event_btnTimKiemActionPerformed
        
     /**
      * @param args the command line arguments
@@ -412,8 +405,8 @@ public class QL_KhuyenMai extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChon;
     private javax.swing.JButton btnQuayLai;
-    private javax.swing.JButton btnSearchKM;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTimKiem;
     private javax.swing.JComboBox<String> cbxLoaiTT_KM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

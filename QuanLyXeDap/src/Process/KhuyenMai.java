@@ -57,6 +57,42 @@ public class KhuyenMai {
     public void setPhanTram(float phanTram) {
         this.phanTram = phanTram;
     }
+    public int themKhuyenMai(String maKM, String noiDung, float dinhMuc, float phanTram) {
+        int i = 0;
+
+        try ( Connection con = ConnectionUtils.getMyConnection()) {
+            String query = "INSERT INTO KHUYENMAI VALUES('"+maKM+"','"+noiDung+"',"+dinhMuc+","+phanTram+")";
+            Statement stat = con.createStatement();
+            i = stat.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return i;
+    }
+    public int suaKhuyenMai(String maKM, String noiDung, float dinhMuc, float phanTram) {
+        int i = 0;
+
+        try ( Connection con = ConnectionUtils.getMyConnection()) {
+            String query = "UPDATE KHUYENMAI SET MAKM='"+maKM+"', NOIDUNG='"+noiDung+"',DINHMUC='"+dinhMuc+"',PHANTRAM='"+phanTram+"'WHERE MAKM='"+maKM+"'";
+            Statement stat = con.createStatement();
+            i = stat.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return i;
+    }
+    public int xoaKhuyenMai(String maKM) {
+        int i = 0;
+
+        try ( Connection con = ConnectionUtils.getMyConnection()) {
+            String query = "DELETE FROM KHUYENMAI WHERE MAKM='"+maKM+"'";
+            Statement stat = con.createStatement();
+            i = stat.executeUpdate(query);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return i;
+    }
 
     public String getNoiDung(String makm) {
         String i = null;
