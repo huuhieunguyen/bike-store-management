@@ -198,9 +198,9 @@ public class TT_KhuyenMai extends javax.swing.JFrame {
         KhuyenMai km = new KhuyenMai();
         int i = km.themKhuyenMai(maKMtext, NDtext, dinhMucText,phanTramText);
         if (i > 0) {
-            JOptionPane.showMessageDialog(this, "Sua thanh cong");
+            JOptionPane.showMessageDialog(this, "Sửa thành công");
         } else {
-            JOptionPane.showMessageDialog(this, "Sua that bai");
+            JOptionPane.showMessageDialog(this, "Sửa thất bại");
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
@@ -210,9 +210,9 @@ public class TT_KhuyenMai extends javax.swing.JFrame {
         KhuyenMai km = new KhuyenMai();
         int i = km.xoaKhuyenMai(maKMtext);
         if (i > 0) {
-            JOptionPane.showMessageDialog(this, "Xoa thanh cong");
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
         } else {
-            JOptionPane.showMessageDialog(this, "Xoa that bai");
+            JOptionPane.showMessageDialog(this, "Xóa thất bại");
         }
         
     }//GEN-LAST:event_btnXoaActionPerformed

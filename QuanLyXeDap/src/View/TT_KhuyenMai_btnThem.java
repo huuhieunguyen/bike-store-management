@@ -171,9 +171,9 @@ public class TT_KhuyenMai_btnThem extends javax.swing.JFrame {
         KhuyenMai km = new KhuyenMai();
         int i = km.themKhuyenMai(maKMtext, NDtext, dinhMucText,phanTramText);
         if (i > 0) {
-            JOptionPane.showMessageDialog(this, "Them thanh cong");
+            JOptionPane.showMessageDialog(this, "Thêm thành công");
         } else {
-            JOptionPane.showMessageDialog(this, "Them that bai");
+            JOptionPane.showMessageDialog(this, "Thêm thất bại");
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
