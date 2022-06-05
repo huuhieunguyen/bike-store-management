@@ -209,5 +209,16 @@ public class SanPham {
         }
         return i;
     }
-    
+    public String TaoMaSP()throws Exception{
+        String strCall="{? = call func_taomasp()}";
+        try(
+                Connection con = ConnectionUtils.getMyConnection();
+                CallableStatement caSt = con.prepareCall(strCall);
+        ){
+            caSt.registerOutParameter(1, Types.CHAR);
+            caSt.executeUpdate();
+            String masp=caSt.getString(1);
+            return masp;
+        }
+    }
 }

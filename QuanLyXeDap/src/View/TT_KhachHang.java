@@ -2,7 +2,6 @@
 package View;
 
 import Process.KhachHang;
-import Process.KhachHangDao;
 
 import java.awt.Color;
 import java.util.Date;
@@ -23,11 +22,11 @@ public class TT_KhachHang extends javax.swing.JFrame {
         //Group button 
         G.add(rdbNu);
         G.add(rdbNam);
-        KhachHangDao kh = new KhachHangDao();
+        KhachHang kh = new KhachHang();
         txtHoTen.setText(kh.getTenKH(maKH));
         txtMaKH.setText(maKH);
         txtSDT.setText(kh.getSDT(maKH));
-        txtSDT.setText(kh.getDiaChi(maKH));
+        txtDiaChi.setText(kh.getDiaChi(maKH));
         txtNgSinh.setDate(kh.getNgSinh(maKH));
         if(kh.getGioiTinh(maKH).equals("Nam")){
             rdbNam.setSelected(true);
@@ -158,6 +157,8 @@ public class TT_KhachHang extends javax.swing.JFrame {
             }
         });
 
+        txtNgSinh.setDateFormatString("d-MMM-yyyy");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -266,10 +267,64 @@ public class TT_KhachHang extends javax.swing.JFrame {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMaKH.getText().equals("")){
+            sb.append("Mã khách hàng không được để trống");
+            txtMaKH.setBackground(Color.red);
+        }else{
+            txtMaKH.setBackground(Color.white);
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(this, sb);
+            return;
+        }
+        try{            
+            KhachHang kh=new KhachHang();
+            kh.setMaKH(txtMaKH.getText());
+            kh.setHoTen(txtHoTen.getText());
+            kh.setGioiTinh(rdbNam.isSelected()? "Nam":"Nu");
+            kh.setSdt(txtSDT.getText());
+            kh.setNgSinh(txtNgSinh.getDate());
+            kh.setDiaChi(txtDiaChi.getText());
+            
+            KhachHang dao= new KhachHang();
+            dao.update(kh);
+            
+            JOptionPane.showMessageDialog(this, "Sửa thành công");
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error" +e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        StringBuilder sb = new StringBuilder();
+        if(txtMaKH.getText().equals("")){
+            sb.append("Mã khách hàng không được để trống");
+            txtMaKH.setBackground(Color.red);
+        }else{
+            txtMaKH.setBackground(Color.white);
+        }
+        if(sb.length()>0){
+            JOptionPane.showMessageDialog(this, sb);
+            return;
+        }
+        
+        try{
+            KhachHang kh=new KhachHang();
+            kh.setMaKH(txtMaKH.getText());
+            
+            KhachHang dao= new KhachHang();
+            dao.delete(kh);
+            
+            JOptionPane.showMessageDialog(this, "Xóa thành công");
+            this.dispose();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error" +e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void txtMaKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaKHActionPerformed

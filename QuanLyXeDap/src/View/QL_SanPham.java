@@ -108,7 +108,7 @@ public class QL_SanPham extends javax.swing.JFrame {
         btnChon = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,6 +126,8 @@ public class QL_SanPham extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("LOẠI THÔNG TIN");
 
+        cbxLoaiThongTin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã SP", "Tên sản phẩm", "Nước sản xuất" }));
+
         TableSP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -137,6 +139,7 @@ public class QL_SanPham extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TableSP.getTableHeader().setReorderingAllowed(false);
         TableSP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TableSPMouseClicked(evt);
@@ -180,13 +183,7 @@ public class QL_SanPham extends javax.swing.JFrame {
             }
         });
 
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search.png"))); // NOI18N
-        btnSearch.setBorder(null);
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search16x16.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -202,8 +199,8 @@ public class QL_SanPham extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtTuKhoa)
                     .addComponent(cbxLoaiThongTin, 0, 168, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
@@ -227,16 +224,12 @@ public class QL_SanPham extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(cbxLoaiThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtTuKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtTuKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(39, 39, 39)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -272,47 +265,6 @@ public class QL_SanPham extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
-        try ( java.sql.Connection con = ConnectionUtils.getMyConnection()) {
-            String sql = null;
-            switch (cbxLoaiThongTin.getSelectedIndex()) {
-                case 0:
-                    sql = "select * from SANPHAM WHERE UPPER(MASP) like '%";
-                    break;
-                case 1:
-                    sql = "select * from SANPHAM WHERE UPPER(TENSP) like '%";
-                    break;
-                case 2:
-                    sql = "select * from SANPHAM WHERE UPPER(NUOCSX) like '%";
-                    break;
-                default:
-                    break;
-            }
-            sql += txtTuKhoa.getText().toUpperCase() + "%'";
-            System.out.print(sql);
-            Statement stat = con.createStatement();
-
-            ResultSet rs = stat.executeQuery(sql);
-            tbn.setRowCount(0);
-            while (rs.next()) {
-                tbn.addRow(new Object[]{
-                    rs.getString("MASP"),
-                    rs.getString("TENSP"),
-                    rs.getString("DVT"),
-                    rs.getString("NUOCSX"),
-                    rs.getString("DONGIA"),
-                    rs.getString("TONGSL"),});
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-            e.printStackTrace();
-        }
-        TableSP.setModel(tbn);
-        setVisible(true);
-    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void TableSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableSPMouseClicked
         // TODO add your handling code here:
@@ -370,9 +322,9 @@ public class QL_SanPham extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableSP;
     private javax.swing.JButton btnChon;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cbxLoaiThongTin;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
