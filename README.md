@@ -10,6 +10,7 @@ _**Nội dung:**_
   - [**IS216.M21**](#is216m21)
   - [**Mục tiêu:**](#mục-tiêu)
   - [**Công cụ sử dụng**](#công-cụ-sử-dụng)
+  - [**Thư viện**](#thư-viện)
 
 ---
 
@@ -57,3 +58,12 @@ Hệ thống bán lẻ chuỗi cửa hàng xe đạp **Green City** mở rộng 
 > - Môi trường phát triển tích hợp (IDE): NetBeans. Trong đồ án này thì NetBeans IDE được sử dụng với mục đích chính là xây dựng giao diện ứng dụng cho hệ thống
 > - JDBC (Java Database Connectivity), là một Java API chuẩn dùng để kết nối giữa ngôn ngữ lập trình Java và các cơ sở dữ liệu
 > - JavaSwing là một phần của JFC (Java Foundation Class), gồm một tập các API dùng để thiết kế giao diện cho các chương trình của Java.
+
+## **Thư viện**
+
+> - ojdbc11.jar
+> - jcalendar-1.4.jar
+> - itextpdf-5.5.13.2.jar
+> - jcommon-1.0.23.jar
+> - jfreechart-1.0.19.jar
+
