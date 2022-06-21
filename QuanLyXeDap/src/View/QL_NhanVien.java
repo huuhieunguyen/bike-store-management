@@ -12,6 +12,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.util.Vector;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -27,8 +28,11 @@ public class QL_NhanVien extends javax.swing.JFrame {
      */
     public QL_NhanVien() {
         initComponents();
+        loadData();
+        HeaderAdjust();
     }
     private String manv;
+
     public void HeaderAdjust() {
         //Set do rong cua bang
         TableNV.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
@@ -65,8 +69,9 @@ public class QL_NhanVien extends javax.swing.JFrame {
         ((DefaultTableCellRenderer) THeader.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
     }
     DefaultTableModel tbn = new DefaultTableModel();
+
     public void loadData() {
-        String[] columnNames = {"Mã NV", "Họ tên", "Giới tính", "Số điện thoại", "Ngày sinh", "Địa chỉ","CMND","Ngày vào làm","Mã NGQL","Hệ số","Đơn vị"};
+        String[] columnNames = {"Mã NV", "Họ tên", "Giới tính", "Số điện thoại", "Ngày sinh", "Địa chỉ", "CMND", "Ngày vào làm", "Mã NGQL", "Hệ số", "Đơn vị"};
         tbn = new DefaultTableModel(columnNames, 0);
         try ( Connection con = ConnectionUtils.getMyConnection()) {
             int number;
@@ -94,6 +99,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
         //Khong cho user edit
         TableNV.setDefaultEditor(Object.class, null);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,7 +120,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
         btnChon = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnTimKiem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,7 +193,12 @@ public class QL_NhanVien extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search16x16.png"))); // NOI18N
+        btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Search16x16.png"))); // NOI18N
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -216,7 +227,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
                     .addComponent(txtTuKhoa)
                     .addComponent(cbxLoaiThongTin, 0, 168, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5)
+                .addComponent(btnTimKiem)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -232,7 +243,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtTuKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
+                    .addComponent(btnTimKiem))
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -271,7 +282,7 @@ public class QL_NhanVien extends javax.swing.JFrame {
 
     private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
         // TODO add your handling code here:
-        if(manv != null) {
+        if (manv != null) {
             TT_NhanVien kh = new TT_NhanVien(manv);
             this.setVisible(false);
             kh.setVisible(true);
@@ -282,6 +293,61 @@ public class QL_NhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
         manv = TableNV.getValueAt(TableNV.getSelectedRow(), 0) + "";
     }//GEN-LAST:event_TableNVMouseClicked
+
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+        // TODO add your handling code here:
+        try ( java.sql.Connection con = ConnectionUtils.getMyConnection()) {
+            String sql = null;
+            switch (cbxLoaiThongTin.getSelectedIndex()) {
+                case 0:
+                    sql = "select * from NHANVIEN WHERE UPPER(MANV) like '%";
+                    break;
+                case 1:
+                    sql = "select * from NHANVIEN WHERE UPPER(HOTEN) like '%";
+                    break;
+                case 2:
+                    sql = "select * from NHANVIEN WHERE UPPER(SDT) like '%";
+                    break;
+                case 3:
+                    sql = "select * from NHANVIEN WHERE UPPER(CMND) like '%";
+                    break;
+                case 4:
+                    sql = "select * from NHANVIEN WHERE UPPER(MA_NGQL) like '%";
+                    break;
+                case 5:
+                    sql = "select * from NHANVIEN WHERE UPPER(MADV) like '%";
+                    break;
+                default:
+                    break;
+            }
+            sql += txtTuKhoa.getText().toUpperCase() + "%'";
+            System.out.print(sql);
+            Statement stat = con.createStatement();
+
+            ResultSet rs = stat.executeQuery(sql);
+            tbn.setRowCount(0);
+            while (rs.next()) {
+                tbn.addRow(new Object[]{
+                    rs.getString("MANV"),
+                    rs.getString("HOTEN"),
+                    rs.getString("GIOITINH"),
+                    rs.getString("SDT"),
+                    rs.getString("NGSINH"),
+                    rs.getString("DIACHI"),
+                    rs.getString("CMND"),
+                    rs.getString("NGVL"),
+                    rs.getString("MA_NGQL"),
+                    rs.getString("HESO"),
+                    rs.getString("MADV")});
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            e.printStackTrace();
+        }
+        TableNV.setModel(tbn);
+        setVisible(true);
+    }//GEN-LAST:event_btnTimKiemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,9 +388,9 @@ public class QL_NhanVien extends javax.swing.JFrame {
     private javax.swing.JTable TableNV;
     private javax.swing.JButton btnChon;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTimKiem;
     private javax.swing.JComboBox<String> cbxLoaiThongTin;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

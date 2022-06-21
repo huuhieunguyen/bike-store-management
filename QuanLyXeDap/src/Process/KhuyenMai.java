@@ -130,7 +130,7 @@ public class KhuyenMai {
         float i = 0;
 
         try ( Connection con = ConnectionUtils.getMyConnection()) {
-            String query = "SELECT PHAMTRAM FROM KHUYENMAI WHERE MAKM = '" + makm + "'";
+            String query = "SELECT PHANTRAM FROM KHUYENMAI WHERE MAKM = '" + makm + "'";
             Statement stat = con.createStatement();
             ResultSet rs = stat.executeQuery(query);
             while (rs.next()) {

@@ -4,7 +4,10 @@
  */
 package View;
 
+import ConnectDB.ConnectionUtils;
 import Process.NhanVien;
+import java.sql.Connection;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -20,6 +23,7 @@ public class TT_NhanVien_btnThem extends javax.swing.JFrame {
      */
     public TT_NhanVien_btnThem() {
         initComponents();
+        LoadComboBox();
         NhanVien kh = new NhanVien();
         try {
             txtMaNV.setText(kh.TaoMaNV());
@@ -27,6 +31,21 @@ public class TT_NhanVien_btnThem extends javax.swing.JFrame {
             Logger.getLogger(TT_NhanVien_btnThem.class.getName()).log(Level.SEVERE, null, ex);
         }
         txtMaNV.setEditable(false);
+    }
+
+    public void LoadComboBox() {
+
+        try ( Connection con = ConnectionUtils.getMyConnection()) {
+            String sql  ="SELECT DISTINCT MA_NGQL FROM NHANVIEN ORDER BY MA_NGQL";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                this.cbxMaQL.addItem(rs.getString("MA_NGQL"));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+     
     }
 
     /**
@@ -65,6 +84,7 @@ public class TT_NhanVien_btnThem extends javax.swing.JFrame {
         btnThem = new javax.swing.JButton();
         txtNgSinh = new com.toedter.calendar.JDateChooser();
         txtNgVL = new com.toedter.calendar.JDateChooser();
+        cbxMaQL = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -212,7 +232,8 @@ public class TT_NhanVien_btnThem extends javax.swing.JFrame {
                             .addComponent(txtMaQL)
                             .addComponent(txtHeSo)
                             .addComponent(txtNgSinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNgVL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtNgVL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxMaQL, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -239,7 +260,7 @@ public class TT_NhanVien_btnThem extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(txtMaQL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbxMaQL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(txtNgSinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -270,9 +291,11 @@ public class TT_NhanVien_btnThem extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel10))))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaQL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -313,29 +336,20 @@ public class TT_NhanVien_btnThem extends javax.swing.JFrame {
         try {
             NhanVien nv = new NhanVien();
             nv.setMaNV(txtMaNV.getText());
-            if (nv.getMaNV().length() > 2) {
-                JOptionPane.showMessageDialog(this, "Chỉ được nhập 1-2 ký tự", "THÔNG BÁO",
-                        JOptionPane.OK_OPTION);
-            } else {
-                if (nv.getMaNV().length() == 1) {
-                    nv.setMaNV(txtMaNV.getText() + "0");
-                }
-                nv.setHoTen(txtHoTen.getText());
-                nv.setGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
-                nv.setSdt(txtSDT.getText());
-                nv.setNgSinh(txtNgSinh.getDate());
-                nv.setDiaChi(txtDiaChi.getText());
-                nv.setCMND(txtCCCD.getText());
-                nv.setNgVL(txtNgVL.getDate());
-                nv.setMaNgQL(txtMaQL.getText());
-                nv.setHeso(Float.parseFloat(txtHeSo.getText()));
-                nv.setMaDV(txtMaDV.getText());
+            nv.setHoTen(txtHoTen.getText());
+            nv.setGioiTinh(rdbNam.isSelected() ? "Nam" : "Nu");
+            nv.setSdt(txtSDT.getText());
+            nv.setNgSinh(txtNgSinh.getDate());
+            nv.setDiaChi(txtDiaChi.getText());
+            nv.setCMND(txtCCCD.getText());
+            nv.setNgVL(txtNgVL.getDate());
+            nv.setMaNgQL(txtMaQL.getText());
+            nv.setHeso(Float.parseFloat(txtHeSo.getText()));
+            nv.setMaDV(txtMaDV.getText());
 
-                NhanVien dao = new NhanVien();
-                dao.insert(nv);
-                JOptionPane.showMessageDialog(this, "Thêm thành công");
-            }
-
+            NhanVien dao = new NhanVien();
+            dao.insert(nv);
+            JOptionPane.showMessageDialog(this, "Thêm thành công");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error" + e.getMessage());
             e.printStackTrace();
@@ -392,6 +406,7 @@ public class TT_NhanVien_btnThem extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnThem;
+    private javax.swing.JComboBox<String> cbxMaQL;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
